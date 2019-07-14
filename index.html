@@ -364,7 +364,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/HangHangbo/2019/07/15/TCP核心设计理念/" class="post-title-link" itemprop="url">核心设计理念</a>
+                <a href="/HangHangbo/2019/07/15/TCP核心设计理念/" class="post-title-link" itemprop="url">“TCP核心设计理念“</a>
               
             
           </h1>
@@ -389,7 +389,7 @@
                 
               
 
-              <time title="创建时间：2019-07-15 01:39:16 / 修改时间：01:45:10" itemprop="dateCreated datePublished" datetime="2019-07-15T01:39:16+08:00">2019-07-15</time>
+              <time title="创建时间：2019-07-15 01:59:13 / 修改时间：01:59:44" itemprop="dateCreated datePublished" datetime="2019-07-15T01:59:13+08:00">2019-07-15</time>
             
 
             
@@ -430,50 +430,77 @@
       
         
           
-            <h2 id="TCP的核心设计理念："><a href="#TCP的核心设计理念：" class="headerlink" title="TCP的核心设计理念："></a>TCP的核心设计理念：</h2><ol>
-<li>保证可靠性传输。</li>
-<li>尽可能的提高传送效率。<br><img src="https://img-blog.csdnimg.cn/20190712172138896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>提高效率的前提是保证可靠性。保证可靠性就必须能及时的发现自己发送的数据是发送成功了还是失败了。   <h2 id="1-确认应答"><a href="#1-确认应答" class="headerlink" title="1. 确认应答"></a>1. 确认应答</h2></li>
+            <h2 id="三次握手（建立连接）"><a href="#三次握手（建立连接）" class="headerlink" title="三次握手（建立连接）"></a>三次握手（建立连接）</h2><p>三次握手其实就和我们日常打电话的时候信号不好的时候两个人通过相互 交流确认对方和你之间的连接是稳定的,举个例子：<br>A：喂，你能听到我的声音吗？<br>B：我能听到你说，你能听到我说话吗？<br>A：可以听到。<br>然后就可以正常的聊天了。<br>对应的客户端和服务器之间的通信连接如图：<br><img src="https://img-blog.csdnimg.cn/20190712170507621.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>TCP，名为传输控制协议，是一种可靠的传输层协议，IP协议号为6。<br>客户端和服务器之间发送的SYN，ACK分别是TCP报文中的标志位。 </p>
+<h2 id="TCP报文格式图"><a href="#TCP报文格式图" class="headerlink" title="TCP报文格式图"></a>TCP报文格式图</h2><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3dzMS5zaW5haW1nLmNuL2xhcmdlLzAwNnRLZlRjbHkxZnFxN2swZDd2NWozMGlmMGM4cTRnLmpwZw" alt="TCP报文格式图"> </p>
+<ul>
+<li>源/目的端口：表示数据是从哪个进程来，到摩纳哥进程去。  </li>
+<li>序号：Seq序号，占32位，用来标识从Tcp源端向目的端发送的字节流，发起方发送数据时对此进行标记。  </li>
+<li>确认序号：Ack序号，占32位，只有ACK标志位为1时，确认序号字段才有效，Ack=Seq+1。</li>
+<li>4位的Tcp报头长度：表示该TCp头部有多少个32位的bit（有多少个4字节）；所以TCP头部最大长度是15*4=60  </li>
+<li>6位标志位：<ol>
+<li>URG:紧急指针是否有效</li>
+<li>ACK：确认号是否有效</li>
+<li>PSH：提示接受应用程序立刻从TCP缓冲区把数据取走</li>
+<li>RST:对方要求重新建立连接；我们把携带RET标识的称为复位报文段</li>
+<li>SYN：请求连接；我们把携带SYN标识的称为同步报文段</li>
+<li>FIN：通知对方，对端要关闭了，我们携带FIN标识的为结束报文段  </li>
 </ol>
-<p>在确认应答机制中，TCP将每一个字节的数据都进行了编码（序号），每一个ACK都带有对应的确认序列号（这里的序号不是从1开始的，是通过建立链接的时候协商出来的从哪里开始）, 意思是告诉发送者, 我已经收到了哪些数据; 下一次你从哪里开始发.  </p>
-<h2 id="2-超时重传机制"><a href="#2-超时重传机制" class="headerlink" title="2.超时重传机制"></a>2.超时重传机制</h2><p><img src="https://img-blog.csdnimg.cn/20190712172309805.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>主机A发送给主机B一段数据，因为网络拥堵等各种原因发生丢包，主机B没有收到主机B，发送给它的数据。主机A在等待了特定的时间之后也没有收到主机B发回的ACK，主机A会进行重新发送。<br>如果主机B收到了主机A第二次发生的数据，会发回对应的ACK，但是如果网络一直拥堵，主机B一直收不到主机A发送的数据，主机A会每隔一段特定的时间进行重传，而超时时间会一次变长（采用一种悲观特态度面对丢包）。如果累计重传此时到一定的次数，TCP认为网络或者对端主机出现异常，强制关闭连接。</p>
+</li>
+<li>16位校验和: 发送端填充, CRC校验. 接收端校验不通过, 则认为数据有问题. 此处的检验和不光包含TCP首部, 也<br>包含TCP数据部分.</li>
+<li>16位紧急指针: 标识哪部分数据是紧急数据;<blockquote>
+<p>确认序号Ack和标识位ACK不是能搞混，确认方（服务器）Ack等于发方（客户端）Req+1,两端对齐  </p>
+</blockquote>
+<h3 id="三次握手（建立连接）-1"><a href="#三次握手（建立连接）-1" class="headerlink" title="三次握手（建立连接）"></a>三次握手（建立连接）</h3>TCP(Transmission Control Protocol)　传输控制协议<br>TCP是主机对主机层的传输协议，提供可靠的连接服务，采用三次握手建立连接。三次握手，即建立一个TCP连接，是指建立一个TCP连接时，需要客户端和服务端总共发送三个包以确认间接的建立。具体流程如图：<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5pdDYxMC5jb20vaW1hZ2UvaW5mbzUvZmY0ZGYxZTU0ZGZiNDU3Nzk0MmIwNjQ3YmIwMTQwNGUuanBn" alt="三次握手图解">  </li>
+<li>第一次握手：客户端将标志位SYN置为1，随机产生一个值撒起就，并将该数据包发送给服务器，客户端进入SYN_SENT状态，等待服务端确认。  </li>
+<li>第二次握手：服务器收到数据包后由标志位SYN=1知道客户端请求连接，服务器将标志位SYN和ACK都置为1，ack（number）=j+1，随机善生一个值seq=K，并将该数据包发送给客户端以确认连接请求，服务器进入SYN_RCVD状态。  </li>
+<li>第三次握手：客户端收到确认之后，检查ack是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=K+1，并将该数据包发送给服务器，服务器检查ack是否为K+，ACK是否为1，如果正确则连接建立成功，服务器和客户端进入ESTABLSIHED状态</li>
+</ul>
+<p>三次握手完成，服务器和客户端之间可以开始传输数据了。在这三次握手的过程中服务器和客户端的状态是不停变换的：  </p>
 <blockquote>
-<p>自动去重：以上提到的情况都是发送的数据丢包，但是也有可能会是接收端发回的取人应答ACK发送丢包，发送端会一直进行超时重传，这种情况下接收端会收到无数重复的数据，此时上面提到的对TCP对传输的数据进行的编码(序号)就派上了用途，接收端会发回相同的ACK，保证传输数据的可靠性。  </p>
+<p>第三次握手的ACK可能也会发生丢包的可能，如果丢包了，服务器将没有进入ESTABLISHED状态，在客户端给服务器发生数据的时候，发生服务器没有进入ESTABLISHED状态，此时客户端会重新请求建立连接，重复三次握手。  </p>
 </blockquote>
-<h2 id="3-连接管理-（单独总结）"><a href="#3-连接管理-（单独总结）" class="headerlink" title="3.连接管理 （单独总结）"></a>3.连接管理 （单独总结）</h2><ul>
-<li>建立连接（三次握手）</li>
-<li>断开连接（四次挥手）</li>
-</ul>
-<h2 id="4-提高传输效率"><a href="#4-提高传输效率" class="headerlink" title="4. 提高传输效率"></a>4. 提高传输效率</h2><p>tcp传输中客户端每发送一个数据，都要等待服务器返回一个ACK，才能继续发送数据<img src="https://img-blog.csdnimg.cn/20190712172811681.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>如图，很明显如果对TCP传输不进行优化的化，客户端和服务器花费在等待应答上的时间就比较多，这样效率就比较低了，所以就出现了优化效率的方法批量发送数据（滑动窗口）。<br><img src="https://img-blog.csdnimg.cn/2019071217292958.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-6sJZGtTV-1562920367332)(https://note.youdao.com/yws/api/personal/file/CC339463B75741C38CD795030067F3BE?method=download&amp;shareKey=67c8858d957431aac96c7f9fccd0f14a)\]">  </p>
+<p><strong>客户端状态变化：</strong>   </p>
 <ul>
-<li>滑动窗口就是批量化的发送数据，批量发送的数据量称为窗口的大小  如图的窗口大小为4000个字节</li>
-<li>发送前4段的时候无需等待ACK直接发送</li>
-<li>收到第一个ACK之后滑动窗口向后移动，继续发送第5段数据，一次类推</li>
-<li>操作系统内核为了维护这个滑动窗口，需要开辟一段发送缓冲区来记录还有那些数据没有应答，只有确认过应答的数据，才能从缓冲区删除，没有收到ACK的数据随时会触发超时重传</li>
-<li>窗口越大，网络吞吐率就越高，但是窗口也不能无限大（要保证可靠性）。    <blockquote>
-<p>发生方发生的数据先到达接收方的网卡，然后放到内核中的接受缓冲区中，接受方的用户代码从缓冲区中读取数据（recv/read）<br>滑动窗口的方式传输发生丢包的话会有两种可能：</p>
+<li>CLOSE-&gt;SYN_SENT：客户端调用con’nect，发送同步报文段。</li>
+<li>SYN_SENT-&gt;ESTABLSHED: connect调用成功，则进入ESTABLISHED状态，开始读入数据。  </li>
+</ul>
+<p><strong>服务器状态变化</strong>  </p>
+<ul>
+<li>CLOSE-&gt;LISTEN ：服务器调用listent后进入LISTENT状态，等待客户端连接。</li>
+<li>LISTEN-&gt;SYN_RCVD: 一旦监听到连接请求（同步报文段），就将该连接放入内核等待队列中，并向客户端发送SYN确认报文。</li>
+<li>SYN_REVD-&gt;ESTABLISHED: 服务端一旦收到客户端的确认端的确认报文，就会进入ESTABLISHED状态，可以进行读写数据了。</li>
+</ul>
+<h2 id="四次挥手（断开连接）"><a href="#四次挥手（断开连接）" class="headerlink" title="四次挥手（断开连接）"></a>四次挥手（断开连接）</h2><p>所谓四次挥手听着名字就是要分开的节奏，这里的四次挥手就是终止TCP连接，就是一方要断开连接的时候，需要客户端和服务器之间发送4个包（或3个，捎带应答）以确认连接的断开。  </p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL2RsMi5pdGV5ZS5jb20vdXBsb2FkL2F0dGFjaG1lbnQvMDEwOC84MzE1LzUxYTk5MzdkLTMxNTUtM2E5NS1iODUzLTk3ZThlMjBlNzU4Yi5wbmc" alt="四次挥手"><br>由于TCP连接时全双工的，每个方向都必须要单独进行关闭，原则是当一方完成数据发送任务后，发送一个FIN(结束报文段) ，对端发送一个ACK，并发送一个FIN也请求断开连接 </p>
+<blockquote>
+<p>建立链接的时候发送的SYN和ACK都是内核控制发送的，但是在断开连接的时候，发送的FIN是调用Close函数触发的，ACK还是内核控制回复</p>
+<ul>
+<li>第一次挥手：客户端或者服务器调用Close给对端发生了FIN，暂且将第一次发生FIN的一端叫做主动端。</li>
+<li>第二次挥手：对端收到FIN，内核返回ACK。</li>
+<li>第三次挥手：对端发送FIn，等待返回ACK。</li>
+<li>第四次挥手：主动端返回ACK，并进入TIME_WAIT状态，保证对端收到ACK并关闭。<br>四次挥手完成，客户端和服务器正常关闭。  </li>
+</ul>
 </blockquote>
-</li>
-<li>数据包丢了（快速重传）：<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5pdDYxMC5jb20vaW1hZ2UvcHJvZHVjdC8yZWM3ZWEzMDMwZTM0NTY3YjJiOWM1ZTRiMTE4MThhZS5qcGc" alt="（转）滑动窗口丢数据"><br>和超时重传本质上是一样的，借助确认序号的特点，能够做到只传丢了的那一个数据，其他正确到达的数据无需重复传输</li>
-</ul>
+<p>  <strong>四次挥手主动端的状态变化</strong>  </p>
 <ul>
-<li>数据包已经抵达，但是ACK丢了：<br><img src="https://img-blog.csdnimg.cn/20190712173343475.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这种情况可以选择无视掉，可以通过后续的ACK进行确认校验。</li>
+<li>ESTABLISHED-&gt;FIN_WAIT_1:主动端调用Close，向被动端发送结束报文段，同时进入FIN_WAIT_1;</li>
+<li>FIN_WAIT_1-&gt;FIN_WAIT_2:主动端收到结束报文段的确认，则进入FIN_WAIT_2,开始等待被动端的结束报文段</li>
+<li>FIN_WAIT_2-&gt;TIME_WAIT:主动端收到被动端的结束报文段，进入TIME_WAIT，并发送LAST_ACK;</li>
+<li>TIME_WAIT-&gt;CLOSE:  主动端要等待一个2MSL的时间，才会进入CLOSED状态；</li>
 </ul>
-<h2 id="5-保证可靠性（控制窗口大小）"><a href="#5-保证可靠性（控制窗口大小）" class="headerlink" title="5. 保证可靠性（控制窗口大小）"></a>5. 保证可靠性（控制窗口大小）</h2><h3 id="1-流量控制"><a href="#1-流量控制" class="headerlink" title="1.流量控制"></a>1.流量控制</h3><p>  发生方如果发的比较快接收方处理不过来。<br>  <img src alt="流量控制"><br>  用接受缓冲区的剩余空间大小作为指标来衡量接收端的处理能力。TCP协议报头中有一个窗口大小字段，这个字段是和接受缓冲区的空余大小相关联的。如果接受缓冲区空余空间大小是1K，此时这个窗口大小字段也是1K，建议发送按照1K这样的窗口大小来发送。  </p>
-<h3 id="2-拥塞控制"><a href="#2-拥塞控制" class="headerlink" title="2. 拥塞控制"></a>2. 拥塞控制</h3><p>如果当前网络比较拥堵，发生方如果发生的很快，仍然会丢包。<br>根据丢包情况作为判断依据，如果出现丢包，认为网络比较堵塞。如果没有丢包，认为网络比较畅通。  </p>
+<p><strong>四次挥手对端的状态变化</strong>  </p>
 <ul>
-<li>慢开始：开始的时候按照比较小的窗口来发送数据</li>
-<li>如果没有丢包，就按照指数的形式提升窗口大小</li>
-<li>如果窗口大小到达一定的阈值之后，而是按照线性增长</li>
-<li>窗口达到一定的大小之后，机会发生丢包，一旦发生丢包，认为网络拥堵，就把窗口大小一下就设回一个非常小的值回复满开始的过程<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zczAuYmRzdGF0aWMuY29tLzcwY0Z2SFNoX1ExWW54R2twb1dLMUhGNmhoeS9pdC91PTM5NTIyMDAxNzIsNjcwODM1NDA2JmZtPTI2JmdwPTAuanBn" alt="拥塞控制"><h2 id="6-延时应答"><a href="#6-延时应答" class="headerlink" title="6.延时应答"></a>6.延时应答</h2>提高传输效率，和滑动窗口相关，在保证可靠性的前提下让滑动窗口尽可能的大。<br>如果接受数据的主机立即发回ACK应答，这个时候返回的窗口可能比较小</li>
-<li>假设接收端缓冲区为1M，一次收到了500K的数据；如果立即应答，返回的窗口就是500k</li>
-<li>但是实际上可能处理端处理的数度是很快的，10ms之内就能把500k数据从缓冲区消费掉</li>
-<li>这种情况下，接收端处理远没有达到自己的极限，即使窗口在大一些，也能处理过来<br>如果接收端稍微等一会应答，比如等待200ms再应答，那么这个时候返回的窗口大小就是1M<br>窗口越大，网络吞吐量越大，传输效率就越高，我们的目标是在保证网络不拥塞的情况下尽量提高传输效率；<blockquote>
-<p>并不是所有的包都可以延迟应答</p>
-</blockquote>
-</li>
-<li>数量限制：每隔N个包就应答一次；</li>
-<li>时间限制：超过最大延迟时间就应答一次；<br><img src="https://img-blog.csdnimg.cn/2019071412361337.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><h2 id="捎带应答"><a href="#捎带应答" class="headerlink" title="捎带应答"></a>捎带应答</h2>在延迟应答的基础上，我们发现，很多情况下，客户端服务器在应用层也是“一发一收”的，意味着客户端给服务器说“How are you”，服务器也会给客户端回一个“Fine， thank you”<br>这个时候ACK就可以搭乘顺风车，和服务器回应“Fine，thank you”一起回给客户端</li>
+<li>ESTABLISHED-&gt;CLOSE_WAIT:当主动端调用Close关闭连接，被动端收到结束报文段，被动端进入CLOSE_WAIT;</li>
+<li>CLOSE_WAIT-&gt;LAST_ACK:进入CLOSE_WAIT后说明被动端准备断开连接（需要处理之前的数据）；当被动端调用Close关闭连接时，会向主动段发送FIN，此时被动端进入LAST_WAIT状态，等待最后一个ACK到来。</li>
+<li>LAST_ACK-&gt;CLOSE:被动端收到了对FIN的ACK，彻底关闭。</li>
 </ul>
+<p>重要的TCP状态：</p>
+<ol>
+<li>LISTEN 服务器启动，等待连接。好比手机开机，信号良好，等别人给你打电话。</li>
+<li>ESTABLISHED 连接建立成功，可进行数据发送和接受了</li>
+<li>CLOSE_WAIT 等待调用Close函数，对端已经执行过close。如果服务器端出现了大量的CLOSE_WAIT状态，那是因为代码中忘记调用Close函数（代码有bug）。</li>
+<li>TIME_WAIT谁主动断开连接谁进入TIME_WAIT状态，主动放发送FIN请求断开连接后，接收到对端返回的ACK后，主动方进入TIME_CLOSE，为了防止出现最后一个ACK丢包的情况。即使客户端的程序已经退出，这个状态仍然可能存在。这个状态会存在2*MSL（一个MSL的时间是发生一个ACK所消耗的时间）的时间，如果这个时间等完了还没收到对方超时重传发生的FIN则就认为最后一个ACK对端已经收到，对端已经关闭。</li>
+</ol>
 
           
         
@@ -550,7 +577,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/HangHangbo/2019/07/12/TCP三次握手四次挥手/" class="post-title-link" itemprop="url">TCP三次握手三次挥手</a>
+                <a href="/HangHangbo/2019/07/12/TCP三次握手四次挥手/" class="post-title-link" itemprop="url">TCP的核心设计理念</a>
               
             
           </h1>
@@ -575,12 +602,24 @@
                 
               
 
-              <time title="创建时间：2019-07-12 16:05:20 / 修改时间：16:07:43" itemprop="dateCreated datePublished" datetime="2019-07-12T16:05:20+08:00">2019-07-12</time>
+              <time title="创建时间：2019-07-12 16:05:20" itemprop="dateCreated datePublished" datetime="2019-07-12T16:05:20+08:00">2019-07-12</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-15 01:55:33" itemprop="dateModified" datetime="2019-07-15T01:55:33+08:00">2019-07-15</time>
               
             
           </span>
@@ -645,7 +684,7 @@
 <ul>
 <li>数据包已经抵达，但是ACK丢了：<br><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562850199369&di=8cad770c389338df991d2ba6ce6cc05b&imgtype=0&src=http%3A%2F%2Fcrawl.ws.126.net%2Fimg%2F5af12e43cf3715d2e15ed936e80de550.jpg" alt="滑动窗口丢ACK"><br>这种情况可以选择无视掉，可以通过后续的ACK进行确认校验。</li>
 </ul>
-<h2 id="5-保证可靠性（控制窗口大小）"><a href="#5-保证可靠性（控制窗口大小）" class="headerlink" title="5. 保证可靠性（控制窗口大小）"></a>5. 保证可靠性（控制窗口大小）</h2><h3 id="1-流量控制"><a href="#1-流量控制" class="headerlink" title="1.流量控制"></a>1.流量控制</h3><p>  发生方如果发的比较快接收方处理不过来。<br>  <img src alt="流量控制"><br>  用接受缓冲区的剩余空间大小作为指标来衡量接收端的处理能力。TCP协议报头中有一个窗口大小字段，这个字段是和接受缓冲区的空余大小相关联的。如果接受缓冲区空余空间大小是1K，此时这个窗口大小字段也是1K，建议发送按照1K这样的窗口大小来发送。  </p>
+<h2 id="5-保证可靠性（控制窗口大小）"><a href="#5-保证可靠性（控制窗口大小）" class="headerlink" title="5. 保证可靠性（控制窗口大小）"></a>5. 保证可靠性（控制窗口大小）</h2><h3 id="1-流量控制"><a href="#1-流量控制" class="headerlink" title="1.流量控制"></a>1.流量控制</h3><p>  发生方如果发的比较快接收方处理不过来。<br>  <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zczAuYmRzdGF0aWMuY29tLzcwY0Z2SFNoX1ExWW54R2twb1dLMUhGNmhoeS9pdC91PTM5NTIyMDAxNzIsNjcwODM1NDA2JmZtPTI2JmdwPTAuanBn" alt="拥塞控制"><br>  用接受缓冲区的剩余空间大小作为指标来衡量接收端的处理能力。TCP协议报头中有一个窗口大小字段，这个字段是和接受缓冲区的空余大小相关联的。如果接受缓冲区空余空间大小是1K，此时这个窗口大小字段也是1K，建议发送按照1K这样的窗口大小来发送。  </p>
 <h3 id="2-拥塞控制"><a href="#2-拥塞控制" class="headerlink" title="2. 拥塞控制"></a>2. 拥塞控制</h3><p>如果当前网络比较拥堵，发生方如果发生的很快，仍然会丢包。<br>根据丢包情况作为判断依据，如果出现丢包，认为网络比较堵塞。如果没有丢包，认为网络比较畅通。  </p>
 <ul>
 <li>慢开始：开始的时候按照比较小的窗口来发送数据</li>
