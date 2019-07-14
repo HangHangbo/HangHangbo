@@ -99,7 +99,7 @@
   <meta name="description" content="TCP的核心设计理念： 保证可靠性传输。 尽可能的提高传送效率。  提高效率的前提是保证可靠性。保证可靠性就必须能及时的发现自己发送的数据是发送成功了还是失败了。    1. 确认应答在确认应答机制中，TCP将每一个字节的数据都进行了编码（序号），每一个ACK都带有对应的确认序列号（这里的序号不是从1开始的，是通过建立链接的时候协商出来的从哪里开始）, 意思是告诉发送者, 我已经收到了哪些数据;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP三次握手三次挥手">
-<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/12/网络基础/index.html">
+<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/12/TCP三次握手四次挥手/index.html">
 <meta property="og:site_name" content="HangHangbo">
 <meta property="og:description" content="TCP的核心设计理念： 保证可靠性传输。 尽可能的提高传送效率。  提高效率的前提是保证可靠性。保证可靠性就必须能及时的发现自己发送的数据是发送成功了还是失败了。    1. 确认应答在确认应答机制中，TCP将每一个字节的数据都进行了编码（序号），每一个ACK都带有对应的确认序列号（这里的序号不是从1开始的，是通过建立链接的时候协商出来的从哪里开始）, 意思是告诉发送者, 我已经收到了哪些数据;">
 <meta property="og:locale" content="zh-CN">
@@ -122,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/07/12/网络基础/">
+  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/07/12/TCP三次握手四次挥手/">
 
 
 
@@ -352,7 +352,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/07/12/网络基础/">
+    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/07/12/TCP三次握手四次挥手/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang Hangbo">
@@ -514,6 +514,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/HangHangbo/2019/07/15/TCP核心设计理念/" rel="prev" title="核心设计理念">
+                核心设计理念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -583,7 +587,7 @@
                 
                   <a href="/HangHangbo/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
