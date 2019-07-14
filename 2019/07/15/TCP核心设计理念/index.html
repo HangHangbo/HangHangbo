@@ -96,21 +96,21 @@
 
 
 
-  <meta name="description" content="三次握手（建立连接）三次握手其实就和我们日常打电话的时候信号不好的时候两个人通过相互 交流确认对方和你之间的连接是稳定的,举个例子：A：喂，你能听到我的声音吗？B：我能听到你说，你能听到我说话吗？A：可以听到。然后就可以正常的聊天了。对应的客户端和服务器之间的通信连接如图：TCP，名为传输控制协议，是一种可靠的传输层协议，IP协议号为6。客户端和服务器之间发送的SYN，ACK分别是TCP报文中的标">
+  <meta name="description" content="三次握手（建立连接）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="“TCP核心设计理念“">
 <meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/15/TCP核心设计理念/index.html">
 <meta property="og:site_name" content="HangHangbo">
-<meta property="og:description" content="三次握手（建立连接）三次握手其实就和我们日常打电话的时候信号不好的时候两个人通过相互 交流确认对方和你之间的连接是稳定的,举个例子：A：喂，你能听到我的声音吗？B：我能听到你说，你能听到我说话吗？A：可以听到。然后就可以正常的聊天了。对应的客户端和服务器之间的通信连接如图：TCP，名为传输控制协议，是一种可靠的传输层协议，IP协议号为6。客户端和服务器之间发送的SYN，ACK分别是TCP报文中的标">
+<meta property="og:description" content="三次握手（建立连接）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190712170507621.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cDovL3dzMS5zaW5haW1nLmNuL2xhcmdlLzAwNnRLZlRjbHkxZnFxN2swZDd2NWozMGlmMGM4cTRnLmpwZw">
 <meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5pdDYxMC5jb20vaW1hZ2UvaW5mbzUvZmY0ZGYxZTU0ZGZiNDU3Nzk0MmIwNjQ3YmIwMTQwNGUuanBn">
 <meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cDovL2RsMi5pdGV5ZS5jb20vdXBsb2FkL2F0dGFjaG1lbnQvMDEwOC84MzE1LzUxYTk5MzdkLTMxNTUtM2E5NS1iODUzLTk3ZThlMjBlNzU4Yi5wbmc">
-<meta property="og:updated_time" content="2019-07-14T17:59:44.221Z">
+<meta property="og:updated_time" content="2019-07-14T18:18:16.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="“TCP核心设计理念“">
-<meta name="twitter:description" content="三次握手（建立连接）三次握手其实就和我们日常打电话的时候信号不好的时候两个人通过相互 交流确认对方和你之间的连接是稳定的,举个例子：A：喂，你能听到我的声音吗？B：我能听到你说，你能听到我说话吗？A：可以听到。然后就可以正常的聊天了。对应的客户端和服务器之间的通信连接如图：TCP，名为传输控制协议，是一种可靠的传输层协议，IP协议号为6。客户端和服务器之间发送的SYN，ACK分别是TCP报文中的标">
+<meta name="twitter:description" content="三次握手（建立连接）">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190712170507621.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
 
 
@@ -392,7 +392,7 @@
                 
               
 
-              <time title="创建时间：2019-07-15 01:59:13 / 修改时间：01:59:44" itemprop="dateCreated datePublished" datetime="2019-07-15T01:59:13+08:00">2019-07-15</time>
+              <time title="创建时间：2019-07-15 01:59:13 / 修改时间：02:18:16" itemprop="dateCreated datePublished" datetime="2019-07-15T01:59:13+08:00">2019-07-15</time>
             
 
             
@@ -431,7 +431,8 @@
       
 
       
-        <h2 id="三次握手（建立连接）"><a href="#三次握手（建立连接）" class="headerlink" title="三次握手（建立连接）"></a>三次握手（建立连接）</h2><p>三次握手其实就和我们日常打电话的时候信号不好的时候两个人通过相互 交流确认对方和你之间的连接是稳定的,举个例子：<br>A：喂，你能听到我的声音吗？<br>B：我能听到你说，你能听到我说话吗？<br>A：可以听到。<br>然后就可以正常的聊天了。<br>对应的客户端和服务器之间的通信连接如图：<br><img src="https://img-blog.csdnimg.cn/20190712170507621.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>TCP，名为传输控制协议，是一种可靠的传输层协议，IP协议号为6。<br>客户端和服务器之间发送的SYN，ACK分别是TCP报文中的标志位。 </p>
+        <h2 id="三次握手（建立连接）"><a href="#三次握手（建立连接）" class="headerlink" title="三次握手（建立连接）"></a>三次握手（建立连接）</h2><a id="more"></a>
+<p>三次握手其实就和我们日常打电话的时候信号不好的时候两个人通过相互 交流确认对方和你之间的连接是稳定的,举个例子：<br>A：喂，你能听到我的声音吗？<br>B：我能听到你说，你能听到我说话吗？<br>A：可以听到。<br>然后就可以正常的聊天了。<br>对应的客户端和服务器之间的通信连接如图：<br><img src="https://img-blog.csdnimg.cn/20190712170507621.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>TCP，名为传输控制协议，是一种可靠的传输层协议，IP协议号为6。<br>客户端和服务器之间发送的SYN，ACK分别是TCP报文中的标志位。 </p>
 <h2 id="TCP报文格式图"><a href="#TCP报文格式图" class="headerlink" title="TCP报文格式图"></a>TCP报文格式图</h2><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3dzMS5zaW5haW1nLmNuL2xhcmdlLzAwNnRLZlRjbHkxZnFxN2swZDd2NWozMGlmMGM4cTRnLmpwZw" alt="TCP报文格式图"> </p>
 <ul>
 <li>源/目的端口：表示数据是从哪个进程来，到摩纳哥进程去。  </li>
