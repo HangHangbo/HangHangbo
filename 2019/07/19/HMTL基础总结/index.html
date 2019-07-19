@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/HangHangbo/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/HangHangbo/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/HangHangbo/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/HangHangbo/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/HangHangbo/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/HangHangbo/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/HangHangbo/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="最近要做项目需要学点前端相关的知识，于是呢我又要开始我的前端学习了—（手动滑稽^-^）废话不多少开始我的前端学习吧！    以下总结来自w3Shcool（w3Shcool）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HMTL基础总结">
+<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/19/HMTL基础总结/index.html">
+<meta property="og:site_name" content="HangHangbo">
+<meta property="og:description" content="最近要做项目需要学点前端相关的知识，于是呢我又要开始我的前端学习了—（手动滑稽^-^）废话不多少开始我的前端学习吧！    以下总结来自w3Shcool（w3Shcool）">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190719111500892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190719113701676.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190719144737399.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-07-19T07:46:03.875Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HMTL基础总结">
+<meta name="twitter:description" content="最近要做项目需要学点前端相关的知识，于是呢我又要开始我的前端学习了—（手动滑稽^-^）废话不多少开始我的前端学习吧！    以下总结来自w3Shcool（w3Shcool）">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190719111500892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/07/19/HMTL基础总结/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>HMTL基础总结 | HangHangbo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/HangHangbo/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HangHangbo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Stay Hungry, Stay Foolish</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/HangHangbo/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/HangHangbo/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/HangHangbo/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/HangHangbo/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/HangHangbo/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/07/19/HMTL基础总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang Hangbo">
+      <meta itemprop="description" content="C/C++，Linux">
+      <meta itemprop="image" content="/HangHangbo/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HangHangbo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HMTL基础总结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-19 15:45:25 / 修改时间：15:46:03" itemprop="dateCreated datePublished" datetime="2019-07-19T15:45:25+08:00">2019-07-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近要做项目需要学点前端相关的知识，于是呢我又要开始我的前端学习了—（手动滑稽^-^）<br>废话不多少开始我的前端学习吧！  </p>
+<blockquote>
+<p>以下总结来自w3Shcool（<a href="http://www.w3school.com.cn/" target="_blank" rel="noopener">w3Shcool</a>）</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="1-HTML简介"><a href="#1-HTML简介" class="headerlink" title="1.HTML简介"></a>1.HTML简介</h2><p>  <strong>HTML是用来描述网页的一种语言：</strong></p>
+<ul>
+<li><p>HTML指的是超文本标记语言(Hyper Text Markup Language)；</p>
+</li>
+<li><p>HTML不是一种编程语言，而是一种标记语言(markup language);</p>
+</li>
+<li><p>标记语言就是一套标记标签（markup tag）；</p>
+</li>
+<li><p>HTML 使用标记标签；  </p>
+<p><strong>HTML标签</strong>  </p>
+<ul>
+<li><p>HTML标签是由尖括ier号包围的关键字，比如 &lt; html&gt;</p>
+</li>
+<li><p>HTML标签通常是成对出现的，比如&lt;b&gt;&lt;/b&gt;</p>
+</li>
+<li><p>标签对中的第一个开始标签，第二个标签是结束标签</p>
+</li>
+<li><p>开始和结束标签也被称为开放标签和闭合标签</p>
+<p><strong>HTML文档=网页</strong></p>
+<ul>
+<li>HTML 文档描述网页</li>
+<li>HTML 文档包含HTML 标签和纯文本</li>
+<li>HTML 文档也被称为网页  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>实践一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;我是一个憨批&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;我不是一个憨批。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>显示结果：<br><img src="https://img-blog.csdnimg.cn/20190719111500892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>例子解释</p>
+<ul>
+<li>&lt;html&gt;与 &lt;/html&gt; 之间的文本描述网页</li>
+<li>&lt;body&gt; 与&lt;/body&gt;之间的文本是可见的页面内容</li>
+<li>&lt;h1&gt;与 &lt;/h1&gt; 之间的文本被显示为标题</li>
+<li>&lt;p&gt; 与 &lt;/p&gt; 之间的文本被显示为段落  </li>
+</ul>
+<h2 id="2-HTML编辑器选择"><a href="#2-HTML编辑器选择" class="headerlink" title="2.HTML编辑器选择"></a><strong>2.HTML编辑器选择</strong></h2><p>  因为我也就是做项目需要用到一点，也没必要选择多么专业的编辑器Notrpod就ok了  </p>
+<ul>
+<li>步骤一：打开Notepod</li>
+<li>步骤二：在Notepod 中输入HTML代码</li>
+<li>步骤三：保存 HTML</li>
+<li>步骤四：在浏览器上运行这个HTML文件<br><img src="https://img-blog.csdnimg.cn/20190719113701676.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">  </li>
+</ul>
+<h2 id="3-HTML-基础"><a href="#3-HTML-基础" class="headerlink" title="3. HTML 基础"></a><strong>3. HTML 基础</strong></h2><ul>
+<li>HTML标题(heading)是通过&lt;h1&gt;-&lt;h6&gt;等标签来定义的。<blockquote>
+<p>&lt; h1&gt;是最大标题，&lt; h6&gt;是最小的 标题。<br>&lt; !–”注释”&gt;用来注释</p>
+</blockquote>
+</li>
+<li>HTML段落是通过&lt;p&gt;标签来进行定义的。  <blockquote>
+<p>HTML 折行<br>&lt; p&gt;This is&lt; br/&gt;a para&lt; br/&gt;graph with line breaks&lt; /p&gt;</p>
+<ul>
+<li>HTML连接是通过&lt;a&gt;标签来定义的。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;https://hanghangbo.github.io/HangHangbo/&quot;&gt; This is a link &lt;a&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在href 属性中指定连接的地址。  </p>
+</blockquote>
+<pre><code>- HTML图像是通过&amp;lt;img&amp;gt;标签来定义的  </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;xxxxx.jpg&quot; width=&quot;xxx&quot; height=&quot;xxx&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>图像的名称和尺寸都是以属性的形式提高    </p>
+</blockquote>
+<h2 id="4-HTML元素"><a href="#4-HTML元素" class="headerlink" title="4. HTML元素"></a><strong>4. HTML元素</strong></h2><pre><code>HTML的元素就是从开始标签(start tag)到结束标签(enf tag)的所有代码。</code></pre><blockquote>
+<p>开始标签长被称为开放标签（opening tag），结束标签常被称为闭合标签（closing tag）   </p>
+</blockquote>
+<p>  HTML 元素语法：  </p>
+<ul>
+<li>HTML 元素以开始标签起始</li>
+<li>HTML元素以结束标签终止</li>
+<li>元素的元素是开始标签与结束标签的内容</li>
+<li>某些HTML元素具有空内容</li>
+<li>空元素在开始标签中进行关闭</li>
+<li>大多数HTML元素拥有属性  </li>
+</ul>
+<p>镶嵌的HTML 元素：</p>
+<blockquote>
+<p>大多数HTML元素可以嵌套（可以包含其他HTML元素）  </p>
+</blockquote>
+<p> HTML实例解释：</p>
+<ul>
+<li><p>&lt;p&gt;元素</p>
+<blockquote>
+<p>定义HTML文档中的一个段落<br>这个元素拥有一个开始标签&lt;p&gt;,以及一个结束标签&lt;/p&gt;<br>元素内容是两者中间部分</p>
+<ul>
+<li>&lt;boby&gt;元素<br>定义了HTML文档的主体。<br>这个元素拥有一个开始标签&lt;boby&gt;和一个结束标签&lt;/boby&gt;<br>元素内容就是另个元素&lt;p&gt;</li>
+</ul>
+</blockquote>
+<ul>
+<li>&lt;html&gt;元素<blockquote>
+<p>定义了整个html文档<br>这个元素拥有一个开始标签&lt;html&gt;以及一个结束标签&lt;/html&gt;<br>元素内容就是boby元素</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p>   <strong>不能忘记结束标签</strong><br>    <strong>空的HTML元素</strong><br>    没有内容的HTML元素都被称为空元素，空元素始在开始标签周昂关闭的。<br>    &lt;br&gt;就是没有哦关闭标签的空元素（&lt;br&gt;标签定义换行）。<br>    在XHTML，XML以及未来的HTML中，所有的元素都必须关闭。<br>    在开始标签中添加斜杠，例如&lt;br/&gt;，就是关闭空元素的方法，即使&lt;br&gt;在所有浏览器中都是有效的，但使用&lt;br/&gt;其实是更长远的保障。  </p>
+<h2 id="5-HTML属性"><a href="#5-HTML属性" class="headerlink" title="5.HTML属性"></a><strong>5.HTML属性</strong></h2><p>属性为HTML元素提供附属信息。属性总数以对称/值对的形式出现，比如：name=”value“。<br>属性总是在HTML元素的开始标签中规定。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//链接</span><br><span class="line">&lt;a href=&quot;https://hanghangbo.github.io/HangHangbo/&quot;&gt;This is my blog！&lt;/a&gt;</span><br><span class="line">//定义标题开始，slign 可以居中</span><br><span class="line">&lt;h1 align=&quot;center&quot;&gt;</span><br><span class="line">//换背景颜色</span><br><span class="line">&lt;body bgcolor=&quot;yellow&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-HTML样式"><a href="#6-HTML样式" class="headerlink" title="6.HTML样式"></a>6.HTML样式</h2><p>style 属性用于改变HTML的样式</p>
+<ul>
+<li>改变显示的字体的颜色 ，大小等；</li>
+<li>改变背景颜色等。</li>
+<li>style 属性淘汰了旧的“align”属性<blockquote>
+<p>改为&lt; h1 style=”text-align:center”&gt;This is a header&lt;/h1&gt;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body style=&quot;background-color:PowderBlue;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;Look! Styles and colors&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;p style=&quot;font-family:verdana;color:red&quot;&gt;</span><br><span class="line">This text is in Verdana and red&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p style=&quot;font-family:times;color:green&quot;&gt;</span><br><span class="line">This text is in Times and green&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p style=&quot;font-size:30px&quot;&gt;This text is 30 pixels high&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>效果如图：<br><img src="https://img-blog.csdnimg.cn/20190719144737399.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">  </p>
+<h2 id="7-HTML-链接"><a href="#7-HTML-链接" class="headerlink" title="7.HTML 链接"></a>7.HTML 链接</h2><p>链接的HTML代码很简单，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;https://hanghangbo.github.io/HangHangbo/&quot;&gt; 我的播客主页&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 点击这行代码生成的链接会直接吧用户带到我的在播客主页<br> href属性规定链接大的目标。开始标签和结束标签之间的文字被作为超链接来显示。</p>
+<p> <strong>target属性</strong><br> 使用Target属性，你可以定义被链接的文档在何处显示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;https://hanghangbo.github.io/HangHangbo/&quot; target =&quot;_blank&quot;&gt; 我的播客主页&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 上面这行代码显示为：<a href="https://hanghangbo.github.io/HangHangbo/">我的博客主页</a>  </p>
+<p> <strong>HTML链接 - name 属性</strong><br>  name 属性规定锚（anchor）的名称，可以使用name属性创建HTML页的书签。  </p>
+<p>   书签不会以任何特殊的方式显示，对读者是不可见的。（可以用id代替name，命名同样有效）<br>   在HTML文档中对锚进行命名（创建一个书签）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a name=&quot;tips&quot;&gt;基本的注意事项 - 有用的提示&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>  在同一个文档里创建一个指向该锚的链接  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;#tips&quot;&gt;有用的提示&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在其他页面中创建指向该锚的链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://www.w3school.com.cn/html/html_links.asp#tips&quot;&gt;有用的提示&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，我们将 # 符号和锚名称添加到 URL 的末端，就可以直接链接到 tips 这个命名锚了</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/HangHangbo/2019/07/16/高级IO之多路复用的三种方式/" rel="next" title="高级IO之多路复用的三种方式">
+                <i class="fa fa-chevron-left"></i> 高级IO之多路复用的三种方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/HangHangbo/images/header.jpg" alt="Zhang Hangbo">
+            
+              <p class="site-author-name" itemprop="name">Zhang Hangbo</p>
+              <div class="site-description motion-element" itemprop="description">C/C++，Linux</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/HangHangbo/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HTML简介"><span class="nav-number">1.</span> <span class="nav-text">1.HTML简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-HTML编辑器选择"><span class="nav-number">2.</span> <span class="nav-text">2.HTML编辑器选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-HTML-基础"><span class="nav-number">3.</span> <span class="nav-text">3. HTML 基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-HTML元素"><span class="nav-number">4.</span> <span class="nav-text">4. HTML元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-HTML属性"><span class="nav-number">5.</span> <span class="nav-text">5.HTML属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-HTML样式"><span class="nav-number">6.</span> <span class="nav-text">6.HTML样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-HTML-链接"><span class="nav-number">7.</span> <span class="nav-text">7.HTML 链接</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Hangbo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+      
+    
+  
+  <script color="0,0,0" opacity="0.5" zindex="-1" count="150" src="true"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/HangHangbo/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/HangHangbo/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/HangHangbo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/HangHangbo/js/utils.js?v=7.1.2"></script>
+
+  <script src="/HangHangbo/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/HangHangbo/js/affix.js?v=7.1.2"></script>
+
+  <script src="/HangHangbo/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/HangHangbo/js/scrollspy.js?v=7.1.2"></script>
+<script src="/HangHangbo/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/HangHangbo/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
