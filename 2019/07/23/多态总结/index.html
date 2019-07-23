@@ -96,17 +96,19 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="继承看类型，多态看对象。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello Hello">
-<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/06/10/hello-world/index.html">
+<meta property="og:title" content="多态总结">
+<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/23/多态总结/index.html">
 <meta property="og:site_name" content="HangHangbo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="继承看类型，多态看对象。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-12T08:38:59.668Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019072321471513.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-07-23T14:47:47.657Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello Hello">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="多态总结">
+<meta name="twitter:description" content="继承看类型，多态看对象。">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019072321471513.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
 
 
 
@@ -114,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/06/10/hello-world/">
+  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/07/23/多态总结/">
 
 
 
@@ -124,7 +126,7 @@
   };
 </script>
 
-  <title>Hello Hello | HangHangbo</title>
+  <title>多态总结 | HangHangbo</title>
   
 
 
@@ -344,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/06/10/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/07/23/多态总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang Hangbo">
@@ -361,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello Hello
+          <h1 class="post-title" itemprop="name headline">多态总结
 
               
             
@@ -387,24 +389,12 @@
                 
               
 
-              <time title="创建时间：2019-06-10 13:25:35" itemprop="dateCreated datePublished" datetime="2019-06-10T13:25:35+08:00">2019-06-10</time>
+              <time title="创建时间：2019-07-23 22:45:45 / 修改时间：22:47:47" itemprop="dateCreated datePublished" datetime="2019-07-23T22:45:45+08:00">2019-07-23</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-12 16:38:59" itemprop="dateModified" datetime="2019-07-12T16:38:59+08:00">2019-07-12</time>
               
             
           </span>
@@ -438,19 +428,49 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <p> 继承看类型，多态看对象。</p>
+<a id="more"></a>    
+<p><strong>1.多态的概念：</strong><br>多态就是多种形态。具体点也就是完成每个行为，不同的对象去完成就会产生不同的状态。或者执行同一种行为产生不同的结果。多态看实际执行的对象，调用对应的代码，继承看类型。<br><strong>2.多态的前提：继承</strong><br>        1）调用函数的类型必须是指针类型或引用<br>        2）被调用函数必须为虚函数，并且被重写(函数名，参数，返回值全部相同)<br>        3）函数重写（覆写）：函数分别存在于子类和父类，函数名参数，返回值都相同（可以是协变）。<br>                协变：返回值的类型可以不同，但是必须分别是基类指针和派生类指针或者基类引用和派生类引用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class A&#123;&#125;;</span><br><span class="line">class B : public A &#123;&#125;;</span><br><span class="line">class Person &#123;</span><br><span class="line">public:</span><br><span class="line">	virtual A* f() &#123; return new A; &#125;</span><br><span class="line">&#125;;</span><br><span class="line">class Student : public Person &#123;</span><br><span class="line">public:</span><br><span class="line">	virtual B* f() &#123; return new B; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p><strong>析构函数最好写成虚函数，让子类和父类的析构函数构成多态</strong><br>        编译器在底层会把父类和子类的析构函数改名为同类函数（destructor）。<br><strong>接口继承（多态）和实现继承（继承）：</strong><br>        普通函数的继承是一种实现继承，派生类继承了基类的函数，可以调用基类的函数，继承是函数是实现。虚函数的继承是一种接口继承，派生类继承的是基类虚函数的接口，目的是为了完成函数的重写，达成多态，继承的是接口。所有如果不实现多态，不要把函数定义成虚函数。<br><strong>重载</strong>：两个函数在同一个作用域，函数名相同，参数不相同<br><strong>重写（覆盖）</strong>：两个函数分别在基类和派生类作用域种，函数名/参数/返回值相同（协变除外）。两个函数必须为虚函数。<br><strong>重定义（隐藏）</strong>：两个函数分别在基类和派生类的作用域，函数名相同，基类和派生类的同名函数不构成重写就是重定义。<br><strong>抽象类</strong></p>
+<ul>
+<li>包含纯虚函数的类为抽象类：不完整的类，不能实例化出对象。</li>
+<li>抽象类：接口继承</li>
+<li>派生类继承后也不能实例化出对象，只有重写虚函数，派生类才能实例化出对象，纯虚函数规范了派生类必须重写，另外纯虚函数更体现了接口继承</li>
+</ul>
+<p><strong>fianl</strong>修饰基类的虚函数不能被继承<br><strong>override</strong>纯虚函数+override 修饰基类函数，迫使派生类函数强制完成基类函数的重写，如果没有完全重写虚函数就会编译出错。</p>
+<p>  <strong>多态的原理：</strong><br>  <img src="https://img-blog.csdnimg.cn/2019072321471513.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">  </p>
+<p> virtual  function pointer –&gt;_vfptrtr—-&gt;虚函数表指针</p>
+<blockquote>
+<p>我们发现b对象是8bytes，除了_b成员，还多一个__vfptr放在对象的前面(注意有些平台可能会放到对象的最后面，这个跟平台有关)，对象中的这个指针我们叫做虚函数表指针(v代表virtual，f代表function)。一个含有虚函数的类中都至少都有一个虚函数表指针，因为虚函数的地址要被放到虚函数表中，虚函数表也简称虚表。    </p>
+</blockquote>
+<p>通过观察和测试，我们发现了以下几点问题：  </p>
+<ol>
+<li><p>派生类对象d中也有一个虚表指针，d对象由两部分构成，一部分是父类继承下来的成员，虚表指针也就<br>是存在部分的另一部分是自己的成员。</p>
+</li>
+<li><p>基类b对象和派生类d对象虚表是不一样的，这里我们发现Func1完成了重写，所以d的虚表中存的是重<br>写的Derive::Func1，所以虚函数的重写也叫作覆盖，覆盖就是指虚表中虚函数的覆盖。重写是语法的<br>叫法，覆盖是原理层的叫法。</p>
+</li>
+<li><p>另外Func2继承下来后是虚函数，所以放进了虚表，Func3也继承下来了，但是不是虚函数，所以不会<br>放进虚表。</p>
+</li>
+<li><p>虚函数表本质是一个存虚函数指针的指针数组，这个数组最后面放了一个nullptr。</p>
+</li>
+<li><p>总结一下派生类的虚表生成：  </p>
+<ul>
+<li>先将基类中的虚表内容拷贝一份到派生类虚表中  </li>
+<li>如果派生类重写了基类中某个虚函数，用派生类自己的虚函数覆盖虚表中基类的虚函数 </li>
+<li>派生类自己新增加的虚函数按其在派生类中的声明次序增加到派生类虚表的最后。。  </li>
+</ul>
+<p><strong>虚函数存放在代码段（vs下）</strong><br>栈：又叫堆栈，存放非静态局部变量/函数参数/返回值等，栈是向下增长的。<br>内存映射段：类似于I/O映射方式，用于装载一个共享的内存空间。用户可以使用系统接口创建共享内存，做进程通信。<br>堆：用于程序运行时动态内存分配，堆是向上增长的。<br>数据段：储存全局数据和静态数据。<br>代码区：可执行的代码/只读常量。</p>
+<p><strong>多态的实现：</strong><br>多态看对象，父类对象在调用它的虚函数时，访问的是父类中的虚表，从这里面拿到它对应的函数。子类同理；</p>
+<ul>
+<li>只要类中有虚函数，对象模型中就会存放一个虚表指针，虚表指针指向虚表，虚表本质上为函数指针数组，虚表在vs下存放在代码段</li>
+<li>本质上是通过虚表实现：程序在运行的时候，根据引用或者指针指向的对象，访问对象模型中的虚表指针，获取虚表中对应位置的函数指针，调用对应的函数</li>
+<li>子类的虚表和父类的虚表个数相同，子类自己定义的虚表放在第一个继承的虚表中</li>
+</ul>
+</li>
+</ol>
+<p><strong>静态绑定：</strong>又称为前期绑定，在程序编译期间确定了程序的行为。如，函数重载。<br><strong>动态绑定：</strong>又称为后期绑定，在程序运行期间，根据具体拿到的类型确定成雪的具体行为，调用具体的函数。</p>
 
       
     </div>
@@ -481,15 +501,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/HangHangbo/2019/07/23/继承/" rel="next" title="继承">
+                <i class="fa fa-chevron-left"></i> 继承
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/HangHangbo/2019/07/12/TCP核心设计理念/" rel="prev" title="TCP的核心设计理念">
-                TCP的核心设计理念 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -533,17 +553,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -591,23 +602,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
