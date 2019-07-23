@@ -96,20 +96,17 @@
 
 
 
-  <meta name="description" content="应用层协议我们在解决一个实际问题，满足日常需求的网络程序，都是在应用层。协议就是一种“约定”，socket api 的接口，在读写数据的时候都是按”字符串“的方式来发送接受的，但是如果我们要传输一些”结构化的数据结构“就要自定制协议了；">
+  <meta name="description" content="1.C语言传统放入处理错误的方式 传统的错误处理机制：   1. 终止程序，如assert，发生内存错误，除0错误时就会终止程序。 2. 返回错误码，需要程序员自己查找对应的错误 3. C标准库setjmp 和longjmo组合">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTTP协议">
-<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/15/HTTP协议/index.html">
+<meta property="og:title" content="异常">
+<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/23/异常/index.html">
 <meta property="og:site_name" content="HangHangbo">
-<meta property="og:description" content="应用层协议我们在解决一个实际问题，满足日常需求的网络程序，都是在应用层。协议就是一种“约定”，socket api 的接口，在读写数据的时候都是按”字符串“的方式来发送接受的，但是如果我们要传输一些”结构化的数据结构“就要自定制协议了；">
+<meta property="og:description" content="1.C语言传统放入处理错误的方式 传统的错误处理机制：   1. 终止程序，如assert，发生内存错误，除0错误时就会终止程序。 2. 返回错误码，需要程序员自己查找对应的错误 3. C标准库setjmp 和longjmo组合">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190715145146438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190715151828229.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-07-19T05:31:23.597Z">
+<meta property="og:updated_time" content="2019-07-23T15:43:49.749Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTTP协议">
-<meta name="twitter:description" content="应用层协议我们在解决一个实际问题，满足日常需求的网络程序，都是在应用层。协议就是一种“约定”，socket api 的接口，在读写数据的时候都是按”字符串“的方式来发送接受的，但是如果我们要传输一些”结构化的数据结构“就要自定制协议了；">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190715145146438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
+<meta name="twitter:title" content="异常">
+<meta name="twitter:description" content="1.C语言传统放入处理错误的方式 传统的错误处理机制：   1. 终止程序，如assert，发生内存错误，除0错误时就会终止程序。 2. 返回错误码，需要程序员自己查找对应的错误 3. C标准库setjmp 和longjmo组合">
 
 
 
@@ -117,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/07/15/HTTP协议/">
+  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/07/23/异常/">
 
 
 
@@ -127,7 +124,7 @@
   };
 </script>
 
-  <title>HTTP协议 | HangHangbo</title>
+  <title>异常 | HangHangbo</title>
   
 
 
@@ -347,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/07/15/HTTP协议/">
+    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/07/23/异常/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang Hangbo">
@@ -364,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HTTP协议
+          <h1 class="post-title" itemprop="name headline">异常
 
               
             
@@ -390,24 +387,12 @@
                 
               
 
-              <time title="创建时间：2019-07-15 13:44:38" itemprop="dateCreated datePublished" datetime="2019-07-15T13:44:38+08:00">2019-07-15</time>
+              <time title="创建时间：2019-07-23 23:42:50 / 修改时间：23:43:49" itemprop="dateCreated datePublished" datetime="2019-07-23T23:42:50+08:00">2019-07-23</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-19 13:31:23" itemprop="dateModified" datetime="2019-07-19T13:31:23+08:00">2019-07-19</time>
               
             
           </span>
@@ -441,77 +426,50 @@
       
 
       
-        <h2 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h2><p>我们在解决一个实际问题，满足日常需求的网络程序，都是在应用层。<br>协议就是一种“约定”，socket api 的接口，在读写数据的时候都是按”字符串“的方式来发送接受的，但是如果我们要传输一些”结构化的数据结构“就要自定制协议了；    </p>
-<a id="more"></a>
-<h2 id="网络计算器"><a href="#网络计算器" class="headerlink" title="网络计算器"></a>网络计算器</h2><p>例如，现在实现一个服务器版本的加法器，我们需要把客户端要计算的两个加数发送过去，然后服务器进行计算，最后再把计算结构返回到客户端；<br>约定方案：</p>
-<ul>
-<li>定制结构体来表达要交互的信息；</li>
-<li>发送数据将这个结构体按照一个规则转换成字符串，接受数据的时候再按照相同的规则把字符串转化为结构体；</li>
-<li>这个过程叫做”系列化“和”反序列化“</li>
-<li>序列化和反序列化的方法有很多我们这里就利用JOSN来实现<blockquote>
-<p>json  是一种非常重要的序列化/反序列化的方式<br>json 的优点：直观，方便调试。文本方式序列化<br>缺点：效率低  </p>
-</blockquote>
-</li>
-</ul>
-<p>   <a href="https://github.com/HangHangbo/Linux/tree/master/tcp_calc" target="_blank" rel="noopener">网络计算器</a>  </p>
-<p>这是我分别用 stringstream 和 josn 实现两种版本的网络计算器的代码，具体流程在代码在注释的很清楚。<br>HTTP协议是应用层协议，基于TCP协议（3.0版本可基于UDP版本）</p>
-<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><p>虽说应用层的协议可以自己定，但是实际上大佬们定义的一些现成的，非常好用的应用层协议，供我们一直使用。HTTP（超文本传输协议）就是其中之一。  </p>
-<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>说到HTTP就不得不说说URL，平时我们俗称的”网站“，就是”URL“<br><img src="https://img-blog.csdnimg.cn/20190715145146438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h3 id="urlencode-和-urldecode"><a href="#urlencode-和-urldecode" class="headerlink" title="urlencode 和 urldecode"></a>urlencode 和 urldecode</h3><p>像/？：等这样的字符串，已经被url当作特殊意义理解了，因此这些字符串不能随意出现。<br>比如，某个参数中需要带有这样特殊的字符，就必须先对字符进行特殊转义。<br>将需要的转码的字符转为16进制，然后从右到左，取4位（不足4位时直接处理），每两位做一位，前面加上%，编码成%XY格式。</p>
-<blockquote>
-<p>c++=&gt;c%2B%2B  </p>
-</blockquote>
-<p> urldecode 就是urlencode的逆过程  </p>
-<h3 id="HTTP协议格式"><a href="#HTTP协议格式" class="headerlink" title="HTTP协议格式"></a>HTTP协议格式</h3><p> <img src="https://img-blog.csdnimg.cn/20190715151828229.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 这是我用fiddler抓包工具抓到的登陆我们教务系统的HTTP请求。  </p>
-<p> <strong>请求：</strong>  </p>
+        <h2 id="1-C语言传统放入处理错误的方式"><a href="#1-C语言传统放入处理错误的方式" class="headerlink" title="1.C语言传统放入处理错误的方式"></a>1.C语言传统放入处理错误的方式</h2><p> <strong>传统的错误处理机制：</strong>  </p>
+<pre><code>1. 终止程序，如assert，发生内存错误，除0错误时就会终止程序。
+2. 返回错误码，需要程序员自己查找对应的错误
+3. C标准库setjmp 和longjmo组合  </code></pre> <a id="more"></a>
+<h2 id="2-C-异常概念"><a href="#2-C-异常概念" class="headerlink" title="2.C++异常概念"></a>2.C++异常概念</h2><p>异常是一种处理错误的方式，当一个函数发现自己无法处理错误时可以抛出异常，让函数的直接或者间接的调用者处理这个错误。  </p>
+<pre><code>- throw:当问题出现，程序会抛出一个异常，这个异常通过throw关键字来完成的。
+- try：try块中的代码标识将就被激活的特定一巡航，它后面会跟很多catch块，
+- catch：在你向要处理问题时四方，通过异常处理程序捕获异常，catch 关键字用于捕获异常，可以有很多catch进行捕获。  </code></pre><h2 id="3-异常的使用"><a href="#3-异常的使用" class="headerlink" title="3.异常的使用"></a>3.异常的使用</h2><pre><code>常的抛出和匹配原则</code></pre><ol>
+<li>异常是通过抛出对象而引发的，该对象的类型决定了应该激活哪个catch的处理代码。</li>
+<li>被选中的处理代码是调用链中与该对象类型匹配且离抛出异常位置最近的那一个。</li>
+<li>抛出异常对象后，会生成一个异常对象的拷贝，因为抛出的异常对象可能是一个临时对象，所以会生成<br>一个拷贝对象，这个拷贝的临时对象会在被catch以后销毁。（这里的处理类似于函数的传值返回）</li>
+<li>catch(…)可以捕获任意类型的异常，问题是不知道异常错误是什么。</li>
+<li>实际中抛出和捕获的匹配原则有个例外，并不都是类型完全匹配，可以抛出的派生类对象，使用基类捕<br>获，这个在实际中非常实用，我们后面会详细讲解这个。  </li>
+</ol>
+<p>在函数调用链中异常栈展开匹配原则</p>
 <ol>
-<li>首行(使用空格分隔):</li>
+<li>首先检查throw本身是否在try块内部，如果是再查找匹配的catch语句。如果有匹配的，则调到catch<br>的地方进行处理。</li>
+<li>没有匹配的catch则退出当前函数栈，继续在调用函数的栈中进行查找匹配的catch。</li>
+<li>如果到达main函数的栈，依旧没有匹配的，则终止程序。上述这个沿着调用链查找匹配的catch子句的<br>过程称为栈展开。所以实际中我们最后都要加一个catch(…)捕获任意类型的异常，否则当有异常没捕<br>获，程序就会直接终止。</li>
+<li>找到匹配的catch子句并处理以后，会继续沿着catch子句后面继续执行。</li>
 </ol>
-<ul>
-<li>方法：GET（获取）POST（传输实体文件） PUT(传输文件)  DELETE  HEAD 等</li>
-<li>URL</li>
-<li>HTTP版本号 HTTP/1.1时最常见的二版本号</li>
-</ul>
-<ol start="2">
-<li>头部信息(header)：包含若干行，每一行都是一个键值对，键和值之间用  “  ：”分隔</li>
-<li>空行：表示header的结束</li>
-<li>请求体（boby）：空格后面全是boby，boby是可选的，可有可无，一般来说GET请求不带boby,POST/PUT请求带boby  </li>
-</ol>
-<p><strong>响应：</strong>  </p>
+<h2 id="4-异常的优缺点"><a href="#4-异常的优缺点" class="headerlink" title="4.异常的优缺点"></a>4.异常的优缺点</h2><p><strong>C++异常的优点：</strong></p>
 <ol>
-<li><p>首行：</p>
-<ul>
-<li>版本号<ul>
-<li>状态码</li>
-<li>状态码描述的信息</li>
-</ul>
+<li><p>异常对象定义好了，相比错误码的方式可以清晰准确的展示出错误的各种信息，甚至可以包含堆栈调用<br>的信息，这样可以帮助更好的定位程序的bug。</p>
 </li>
-</ul>
-<ol start="2">
-<li>header：有若干行，每一行都是键值对</li>
-<li>空行：表示header部分结束</li>
-<li>boby：空行之后全是boby</li>
+<li><p>返回错误码的传统方式有个很大的问题就是，在函数调用链中，深层的函数返回了错误，那么我们得层<br>层返回错误，最外层才能拿到错误.  </p>
+</li>
+<li><p>很多的第三方库都包含异常，比如boost、gtest、gmock等等常用的库，那么我们使用它们也需要使用<br>异常。</p>
+</li>
+<li><p>很多测试框架都使用异常，这样能更好的使用单元测试等进行白盒的测试。</p>
+</li>
+<li><p>部分函数使用异常更好处理，比如构造函数没有返回值，不方便使用错误码方式处理。比如T&amp;<br>operator这样的函数，如果pos越界了只能使用异常或者终止程序处理，没办法通过返回值表示错误。         </p>
+<p> <strong>C++异常的缺点：</strong></p>
+<ol>
+<li>异常会导致程序的执行流乱跳，并且非常的混乱，并且是运行时出错抛异常就会乱跳。这会导致我们跟<br>踪调试时以及分析程序时，比较困难。</li>
 </ol>
-<blockquote>
-<p>GET和POST的区别:<br>设计之初GET从服务器上拿数据，POST向服务器发送数据<br>但是现在GET可以向服务器放数据，POST可以从服务器上拿数据<br>区分GET和POST的方法只有：<br>GET往往将参数放到query_string中，POST将数据放到boby中</p>
-</blockquote>
-<p><strong>常见的HTTP状态码：</strong>         </p>
-<ul>
-<li>1XX：信息提示</li>
-<li>2XX：成功，例如 200 表示访问成功</li>
-<li>3XX：重定向，例如 302 Found表示重定向 ，303 see other 重定向Location字段表示重定向到哪个url上去</li>
-<li>4XX：客户端出现错误，403 Forbiden用户没有访问权限，404 Not Found 没有找到指定的资源</li>
-<li>5XX：服务器出现错误，502 Bad Gateway 服务器挂了 504 Gateway Timeout服务器响应超时  </li>
-<li></li>
-</ul>
-<p><strong>常见的header</strong></p>
-<ul>
-<li>Content-Type: 响应boby的数据是什么类型的text/html描述了页面的骨架 text/css，Content-Length boby 的长度（单位是字节）</li>
-<li>Host：客户端告知服务器，所请求的资源是在哪个主机的哪个端口上</li>
-<li>User-Agent: 描述浏览器和操作系统的信息（能区分电脑访问和手机访问），手机端访问的时候看到的页面并不是服务器根据UA来吐一个单独的比较窄的页面，而完全靠前端技术来实现的（响应编程）</li>
-<li>referer：当前页面是通过哪个页面跳转来的（莆田医院给百度算多少广告费就应该参考的这个数据）</li>
-<li>Cookie：是一个保存在浏览器的字符串，字符串的含义是程序员内部约定的，外部的用户一般都看不懂，Cookio中最常见的内容是用户的身份信息，当我们登陆服务器就是回返回一个身份信息字符串，浏览器通过Ser-Cookie保存早Cookie后续浏览器在打开这个网页时就会带有返回的Cookie，自动登陆</li>
-</ul>
+</li>
+<li><p>异常会有一些性能的开销。当然在现代硬件速度很快的情况下，这个影响基本忽略不计。</p>
+</li>
+<li><p>C++没有垃圾回收机制，资源需要自己管理。有了异常非常容易导致内存泄漏、死锁等异常安全问题。<br>这个需要使用RAII来处理资源的管理问题。学习成本较高。</p>
+</li>
+<li><p>C++标准库的异常体系定义得不好，导致大家各自定义各自的异常体系，非常的混乱。</p>
+</li>
+<li><p>异常尽量规范使用，否则后果不堪设想，随意抛异常，外层捕获的用户苦不堪言。所以异常规范有两<br>点：一、抛出异常类型都继承自一个基类。二、函数是否抛异常、抛什么异常，都使用 func（）<br>throw();的方式规范化。</p>
 </li>
 </ol>
 
@@ -544,8 +502,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/HangHangbo/2019/07/15/TCP三次握手四次挥手/" rel="next" title="TCP三次握手四次挥手">
-                <i class="fa fa-chevron-left"></i> TCP三次握手四次挥手
+              <a href="/HangHangbo/2019/07/23/多态总结/" rel="next" title="多态总结">
+                <i class="fa fa-chevron-left"></i> 多态总结
               </a>
             
           </div>
@@ -553,10 +511,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/HangHangbo/2019/07/16/高级IO之多路复用的三种方式/" rel="prev" title="高级IO之多路复用的三种方式">
-                高级IO之多路复用的三种方式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -669,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层协议"><span class="nav-number">1.</span> <span class="nav-text">应用层协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络计算器"><span class="nav-number">2.</span> <span class="nav-text">网络计算器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP协议"><span class="nav-number">3.</span> <span class="nav-text">HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#URL"><span class="nav-number">3.1.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#urlencode-和-urldecode"><span class="nav-number">3.2.</span> <span class="nav-text">urlencode 和 urldecode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP协议格式"><span class="nav-number">3.3.</span> <span class="nav-text">HTTP协议格式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-C语言传统放入处理错误的方式"><span class="nav-number">1.</span> <span class="nav-text">1.C语言传统放入处理错误的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-C-异常概念"><span class="nav-number">2.</span> <span class="nav-text">2.C++异常概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-异常的使用"><span class="nav-number">3.</span> <span class="nav-text">3.异常的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-异常的优缺点"><span class="nav-number">4.</span> <span class="nav-text">4.异常的优缺点</span></a></li></ol></div>
             
 
           </div>
