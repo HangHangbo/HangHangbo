@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/HangHangbo/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/HangHangbo/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/HangHangbo/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/HangHangbo/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/HangHangbo/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/HangHangbo/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/HangHangbo/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1.泛型编程泛型编程：编写与类型不管的同样代码，是代码复用的一种手段，模板是泛型编程的基础。不是使用泛型编程，使用函数重载可以实现实现一个通用的交换函数：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模板">
+<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/24/模板/index.html">
+<meta property="og:site_name" content="HangHangbo">
+<meta property="og:description" content="1.泛型编程泛型编程：编写与类型不管的同样代码，是代码复用的一种手段，模板是泛型编程的基础。不是使用泛型编程，使用函数重载可以实现实现一个通用的交换函数：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190724225039707.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-07-24T15:32:10.393Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模板">
+<meta name="twitter:description" content="1.泛型编程泛型编程：编写与类型不管的同样代码，是代码复用的一种手段，模板是泛型编程的基础。不是使用泛型编程，使用函数重载可以实现实现一个通用的交换函数：">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190724225039707.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/07/24/模板/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>模板 | HangHangbo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/HangHangbo/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HangHangbo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Stay Hungry, Stay Foolish</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/HangHangbo/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/HangHangbo/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/HangHangbo/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/HangHangbo/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/HangHangbo/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/07/24/模板/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang Hangbo">
+      <meta itemprop="description" content="C/C++，Linux">
+      <meta itemprop="image" content="/HangHangbo/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HangHangbo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">模板
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-24 23:31:34 / 修改时间：23:32:10" itemprop="dateCreated datePublished" datetime="2019-07-24T23:31:34+08:00">2019-07-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-泛型编程"><a href="#1-泛型编程" class="headerlink" title="1.泛型编程"></a>1.泛型编程</h2><p>泛型编程：编写与类型不管的同样代码，是代码复用的一种手段，模板是泛型编程的基础。<br>不是使用泛型编程，使用函数重载可以实现实现一个通用的交换函数：  </p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void Swap(int&amp; left, int&amp; right) &#123;</span><br><span class="line">int temp = left;</span><br><span class="line">left = right;</span><br><span class="line">right = temp; &#125;</span><br><span class="line">void Swap(double&amp; left, double&amp; right) &#123;</span><br><span class="line">double temp = left;</span><br><span class="line">left = right;</span><br><span class="line">right = temp; &#125;</span><br><span class="line">void Swap(char&amp; left, char&amp; right) &#123;</span><br><span class="line">char temp = left;</span><br><span class="line">left = right;</span><br><span class="line">right = temp; &#125;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>由此可见：  </p>
+<ol>
+<li>重载的函数仅仅只是类型不同，代码的复用率表弟，只要有新的类型出现，就需要增加对用的函数</li>
+<li>代码的可维护性比较低，一个出错可能所有的重载出错  </li>
+</ol>
+</blockquote>
+<p>  由此可见利用泛型编程，让编译器根据不通的类型利用该模板来生成相应的代码是多么高效的。       </p>
+<h2 id="2-函数模板"><a href="#2-函数模板" class="headerlink" title="2.函数模板"></a>2.函数模板</h2><p>函数模板代表了一个函数家族，该函数模板与类型无关，在使用时被参数化，根据实参类型产生函数的特定<br>类型版本。<br><strong>2.1  函数模板格式</strong>  </p>
+<p>将上面的变换函数写成一个函数模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T&gt;</span><br><span class="line">void Swap( T&amp; left, T&amp; right) &#123; T temp = left;</span><br><span class="line">left = right;</span><br><span class="line">right = temp; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>template&lt;typename T1, typename T2,……,typename Tn&gt;<br>返回值类型 函数名(参数列表){}</p>
+<blockquote>
+<p>typename 是用来定义模板参数关键字，也可以使用class，不能使用struct代替class  </p>
+</blockquote>
+<p>  <strong>2.2 函数的原理</strong><br>  <img src="https://img-blog.csdnimg.cn/20190724225039707.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">  </p>
+<p>  在编译器编译阶段，对模板函数的使用，编译器需要根据传入的实参类型来推演生成相对应参数的函数以供调用，如图，当用double类型使用函数模板时，编译器通过对实参的推演，将T确定为double类型，然后产生一份专门处理double类型的代码。<br>  <strong>2.3 函数模板的实例化</strong><br>  不同类型的参数使用模板时，称为函数模板的实例化。模板参数实例化分为：隐式实例化和显式实例化。<br>          1. 隐式实例化：让编译器根据实参推演模板的实际类型  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt; T Add(const T&amp; left, const T&amp; right) &#123;</span><br><span class="line">return left + right; &#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int a1 = 10, a2 = 20;</span><br><span class="line">double d1 = 10.0, d2 = 20.0;</span><br><span class="line">Add(a1, a2);</span><br><span class="line">Add(d1, d2);</span><br><span class="line">/*</span><br><span class="line">该语句不能通过编译，因为在编译期间，当编译器看到该实例化时，需要推演其实参类型</span><br><span class="line">通过实参a1将T推演为int，通过实参d1将T推演为double类型，但模板参数列表中只有一个T，</span><br><span class="line">编译器无法确定此处到底该将T确定为int 或者 double类型而报错</span><br><span class="line">注意：在模板中，编译器一般不会进行类型转换操作，因为一旦转化出问题，编译器就需要背黑锅</span><br><span class="line">Add(a1, d1);</span><br><span class="line">*/</span><br><span class="line">// 此时有两种处理方式：1. 用户自己来强制转化 2. 使用显式实例化</span><br><span class="line">Add(a, (int)d);</span><br><span class="line">return 0; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.显式实例化：在函数名后的&lt;&gt;中指定模板参数的实际类型  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int main(void) &#123;</span><br><span class="line">int a = 10;</span><br><span class="line">double b = 20.0;</span><br><span class="line">// 显式实例化</span><br><span class="line">Add&lt;int&gt;(a, b);</span><br><span class="line">return 0; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果类型不匹配，编译器会尝试进行隐拾类型转换，如果无法转换成功编译器将会保错。</p>
+<p> <strong>2.4 模板参数的匹配原则</strong><br>      - 一个非模板函数可以和一个同名的函数模板同时存在，而且该函数模板还可以被实例化为非模板函数。<br>      - 对于非模板函数和同名函数模板，如果其他条件都相同，在调用时会优先调用非模板函数而不是该模板函数残生的一个实例。<br>      - 模板函数不允许自动类型转换，但是普通函数可以进行自动类型转换。  </p>
+<h2 id="3-类模板"><a href="#3-类模板" class="headerlink" title="3.类模板"></a>3.类模板</h2><p><strong>3.1 类模板的定义格式</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T1, class T2, ..., class Tn&gt;</span><br><span class="line">class 类模板名</span><br><span class="line">&#123;</span><br><span class="line">// 类内成员定义</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p> 在这里实现一个动态顺序表的模板：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// 动态顺序表</span><br><span class="line">template&lt;class T&gt;</span><br><span class="line">class Vector</span><br><span class="line">&#123; </span><br><span class="line">public :</span><br><span class="line">Vector(size_t capacity = 10)</span><br><span class="line"> : _pData(new T[capacity])</span><br><span class="line"> , _size(0)</span><br><span class="line"> , _capacity(capacity)</span><br><span class="line"> &#123;&#125;</span><br><span class="line">// 使用析构函数演示：在类中声明，在类外定义。</span><br><span class="line">~Vector();</span><br><span class="line">void PushBack(const T&amp; data)</span><br><span class="line"> &#123;</span><br><span class="line">// _CheckCapacity();</span><br><span class="line">_pData[_size++] = data;</span><br><span class="line"> &#125;</span><br><span class="line">void PopBack()</span><br><span class="line"> &#123;</span><br><span class="line">--_size;</span><br><span class="line"> &#125;</span><br><span class="line">size_t Size()</span><br><span class="line"> &#123;</span><br><span class="line">return _size;</span><br><span class="line"> &#125;</span><br><span class="line">T&amp; operator[](size_t pos)</span><br><span class="line"> &#123;</span><br><span class="line">assert(pos &lt; _size);</span><br><span class="line">return _pData[pos];</span><br><span class="line"> &#125;</span><br><span class="line">private: T* _pData;</span><br><span class="line">size_t _size;</span><br><span class="line">size_t _capacity;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>类模板中的函数在类外面定义时，需要加模板参数列表<br>以上的vector不是具体的类，时编译器根据被实例化的类型生成具体类的摸具。<br> <strong>3.2类模板的实例化</strong><br>类模板实例化与函数模板实例化不同，类模板实例化需要在类模板名字后跟&lt;&gt;，然后将实例化的类型放在&lt;&gt;中即可，类模板名字不是真正的类，而实例化的结果才是真正的类。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	Vector&lt;int&gt; v;</span><br><span class="line">	v.PushBack(1);</span><br><span class="line">	v.PushBack(2);</span><br><span class="line">	v.PushBack(3);</span><br><span class="line">	v.PushBack(4);</span><br><span class="line">	v.PopBack();</span><br><span class="line">	cout &lt;&lt; v.Size() &lt;&lt; endl;</span><br><span class="line">	for (int i = 0; i &lt; v.Size();i++)&#123;</span><br><span class="line">		cout &lt;&lt; v[i] &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/HangHangbo/2019/07/23/异常/" rel="next" title="异常">
+                <i class="fa fa-chevron-left"></i> 异常
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/HangHangbo/images/header.jpg" alt="Zhang Hangbo">
+            
+              <p class="site-author-name" itemprop="name">Zhang Hangbo</p>
+              <div class="site-description motion-element" itemprop="description">C/C++，Linux</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/HangHangbo/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-泛型编程"><span class="nav-number">1.</span> <span class="nav-text">1.泛型编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-函数模板"><span class="nav-number">2.</span> <span class="nav-text">2.函数模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-类模板"><span class="nav-number">3.</span> <span class="nav-text">3.类模板</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Hangbo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+      
+    
+  
+  <script color="0,0,0" opacity="0.5" zindex="-1" count="150" src="true"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/HangHangbo/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/HangHangbo/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/HangHangbo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/HangHangbo/js/utils.js?v=7.1.2"></script>
+
+  <script src="/HangHangbo/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/HangHangbo/js/affix.js?v=7.1.2"></script>
+
+  <script src="/HangHangbo/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/HangHangbo/js/scrollspy.js?v=7.1.2"></script>
+<script src="/HangHangbo/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/HangHangbo/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
