@@ -98,15 +98,17 @@
 
   <meta name="description" content="1.泛型编程泛型编程：编写与类型不管的同样代码，是代码复用的一种手段，模板是泛型编程的基础。不是使用泛型编程，使用函数重载可以实现实现一个通用的交换函数：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="模板">
+<meta property="og:title" content="HangHangbo">
 <meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/24/模板/index.html">
 <meta property="og:site_name" content="HangHangbo">
 <meta property="og:description" content="1.泛型编程泛型编程：编写与类型不管的同样代码，是代码复用的一种手段，模板是泛型编程的基础。不是使用泛型编程，使用函数重载可以实现实现一个通用的交换函数：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190724225039707.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-07-24T15:32:10.393Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190725082644968.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190725082506956.png">
+<meta property="og:updated_time" content="2019-07-25T02:00:24.059Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="模板">
+<meta name="twitter:title" content="HangHangbo">
 <meta name="twitter:description" content="1.泛型编程泛型编程：编写与类型不管的同样代码，是代码复用的一种手段，模板是泛型编程的基础。不是使用泛型编程，使用函数重载可以实现实现一个通用的交换函数：">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190724225039707.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
 
@@ -126,7 +128,7 @@
   };
 </script>
 
-  <title>模板 | HangHangbo</title>
+  <title> | HangHangbo</title>
   
 
 
@@ -363,7 +365,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">模板
+          <h1 class="post-title" itemprop="name headline">
 
               
             
@@ -389,12 +391,24 @@
                 
               
 
-              <time title="创建时间：2019-07-24 23:31:34 / 修改时间：23:32:10" itemprop="dateCreated datePublished" datetime="2019-07-24T23:31:34+08:00">2019-07-24</time>
+              <time title="创建时间：2019-07-24 23:31:34" itemprop="dateCreated datePublished" datetime="2019-07-24T23:31:34+08:00">2019-07-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-25 10:00:24" itemprop="dateModified" datetime="2019-07-25T10:00:24+08:00">2019-07-25</time>
               
             
           </span>
@@ -428,8 +442,7 @@
       
 
       
-        <h2 id="1-泛型编程"><a href="#1-泛型编程" class="headerlink" title="1.泛型编程"></a>1.泛型编程</h2><p>泛型编程：编写与类型不管的同样代码，是代码复用的一种手段，模板是泛型编程的基础。<br>不是使用泛型编程，使用函数重载可以实现实现一个通用的交换函数：  </p>
-<a id="more"></a>
+        <h2 id="1-泛型编程"><a href="#1-泛型编程" class="headerlink" title="1.泛型编程"></a>1.泛型编程</h2><p>泛型编程：编写与类型不管的同样代码，是代码复用的一种手段，模板是泛型编程的基础。<br>不是使用泛型编程，使用函数重载可以实现实现一个通用的交换函数：<br>  <a id="more"></a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void Swap(int&amp; left, int&amp; right) &#123;</span><br><span class="line">int temp = left;</span><br><span class="line">left = right;</span><br><span class="line">right = temp; &#125;</span><br><span class="line">void Swap(double&amp; left, double&amp; right) &#123;</span><br><span class="line">double temp = left;</span><br><span class="line">left = right;</span><br><span class="line">right = temp; &#125;</span><br><span class="line">void Swap(char&amp; left, char&amp; right) &#123;</span><br><span class="line">char temp = left;</span><br><span class="line">left = right;</span><br><span class="line">right = temp; &#125;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
 
 
@@ -468,6 +481,81 @@
 <p>类模板中的函数在类外面定义时，需要加模板参数列表<br>以上的vector不是具体的类，时编译器根据被实例化的类型生成具体类的摸具。<br> <strong>3.2类模板的实例化</strong><br>类模板实例化与函数模板实例化不同，类模板实例化需要在类模板名字后跟&lt;&gt;，然后将实例化的类型放在&lt;&gt;中即可，类模板名字不是真正的类，而实例化的结果才是真正的类。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	Vector&lt;int&gt; v;</span><br><span class="line">	v.PushBack(1);</span><br><span class="line">	v.PushBack(2);</span><br><span class="line">	v.PushBack(3);</span><br><span class="line">	v.PushBack(4);</span><br><span class="line">	v.PopBack();</span><br><span class="line">	cout &lt;&lt; v.Size() &lt;&lt; endl;</span><br><span class="line">	for (int i = 0; i &lt; v.Size();i++)&#123;</span><br><span class="line">		cout &lt;&lt; v[i] &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-非类模板参数"><a href="#4-非类模板参数" class="headerlink" title="4. 非类模板参数"></a>4. 非类模板参数</h2><p>模板参数分为类型参数和非类型参数。  </p>
+<p>类型性参数：出现在模板参数列表中，跟class或者typenname之类的参数类型名称。<br>非类型形参：用一个常量作为（函数）模板的一个参数，在类（函数）的模板中可将参数当做常量使用。（类似于定义了一个宏）   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T, size_t N = 10&gt;</span><br><span class="line">class Array</span><br><span class="line">&#123;</span><br><span class="line">private:</span><br><span class="line"> 	T _array[N];</span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
+
+<p>这个功能比较鸡肋，因为申请的空间是在栈上开辟的。</p>
+<blockquote>
+<ul>
+<li>浮点型、类对象以及字符串是不允许组为非类型模板参数的。</li>
+<li>非类型的模板参数必须在编译期就能确认结果。  </li>
+</ul>
+</blockquote>
+<h2 id="5-模板的特化"><a href="#5-模板的特化" class="headerlink" title="5.模板的特化"></a>5.模板的特化</h2><p><strong>5.1特化</strong><br>使用模板可以是实现一些与类型无关的代码，但是对于一些特殊类型的可能会得到一些错误的结构，比如：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">template&lt;class T&gt;</span><br><span class="line">bool IsEqual(T&amp; left, T&amp; right) &#123;</span><br><span class="line">	return left &gt; right;</span><br><span class="line">&#125;</span><br><span class="line">void Test()</span><br><span class="line">&#123;</span><br><span class="line">	</span><br><span class="line">	char* p1 = &quot;hello&quot;;</span><br><span class="line">	char* p2 = &quot;world&quot;;</span><br><span class="line">	</span><br><span class="line">	cout &lt;&lt; IsEqual(p1, p2) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">template&lt;class T&gt;</span><br><span class="line">bool IsEqual(T&amp; left, T&amp; right) &#123;</span><br><span class="line">	return left &gt; right;</span><br><span class="line">&#125;</span><br><span class="line">void Test()</span><br><span class="line">&#123;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	char* p2 = &quot;world&quot;;</span><br><span class="line">	char* p1 = &quot;hello&quot;;</span><br><span class="line">	cout &lt;&lt; IsEqual(p1, p2) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用Test1返回的结果：<br>  <img src="https://img-blog.csdnimg.cn/20190725082644968.png" alt="在这里插入图片描述"><br>调用Test2返回的结果：<br><img src="https://img-blog.csdnimg.cn/20190725082506956.png" alt="在这里插入图片描述"><br>可以观察到用这个模板函数对两个字符串进行比较，得到的返回值和字符的内容没有任何关系，之和指针的地址有关系，这样就不能反映出这个代码的真正的功能，这时候就要对模板进行特化。<br><strong>5.1 函数模板的特化</strong><br>特化步骤：<br>    1. 必须要现有一个基础的函数模板<br>    2. 关键字templata后接一对空的尖括号&lt;&gt;<br>    3. 函数名后跟一对尖括号，尖括号指定需要特化的类型<br>    4. 函数形参表: 必须要和模板函数的基础参数类型完全相同，如果不同编译器可能会报一些奇怪的错误。 </p>
+<p>将上面的比较大小的模板进行特化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template&lt;&gt;</span><br><span class="line">bool IsEqual&lt;char*&gt;(char*&amp; left, char*&amp; right) &#123;</span><br><span class="line">if(strcmp(left, right) &gt; 0)</span><br><span class="line">return true;</span><br><span class="line">return false; &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>  <strong>5.2 类模板的特化</strong>  </p>
+<ul>
+<li>全特化：全特化就是将模板参数泪飙中的所有参数都确认化  </li>
+<li>偏特化：     <pre><code>1. 部分特化，将参数模板中的一部分参数特化。  
+2. 参数更进一步的限制：偏特化并不仅仅是指特化部分参数，而是针对模板参数更进一步的条件限制所设计出来的一个特化版本</code></pre></li>
+</ul>
+<h2 id="6-类模板特化应用之内存萃取"><a href="#6-类模板特化应用之内存萃取" class="headerlink" title="6. 类模板特化应用之内存萃取"></a>6. 类模板特化应用之内存萃取</h2><p>STL库里对拷贝分为两种情况处理：  </p>
+<ul>
+<li><p>内置类型：memcpy 一片内存完整的拷贝，效率高，时间复杂度O(1);</p>
+</li>
+<li><p>自定义类型：赋值拷贝，一个一个赋值，要走一边循环，效率低，时间复杂度O(N);  </p>
+<p>那么每次在拷贝的时候如何判断区分是走memcpy还是辅助拷贝，有两种方法：  </p>
+<ul>
+<li><p>增加bool类型（IsPODType）区分自定义和内置类型   </p>
+<blockquote>
+<p>POD: Planin Old Data 代表内置类型 </p>
+</blockquote>
+</li>
+<li><p>使用函数区分内置类型和自定义类型</p>
+<blockquote>
+<p>RTTI:运行时类型识别  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bool IsPODType(const char* strType) &#123;</span><br><span class="line">const char* arrType[] = &#123;&quot;char&quot;, &quot;short&quot;, &quot;int&quot;, &quot;long&quot;, &quot;long long&quot;, &quot;float&quot;, </span><br><span class="line">&quot;double&quot;, &quot;long double&quot;&#125;;</span><br><span class="line">for(size_t i = 0; i &lt; sizeof(array)/sizeof(array[0]); ++i)</span><br><span class="line"> &#123;</span><br><span class="line">if(0 == strcmp(strType, arrType[i]))</span><br><span class="line">return true;</span><br><span class="line"> &#125;</span><br><span class="line">return false; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过typeid来确认所拷贝对象的实际类型，然后再在内置类型集合中枚举是其否出现过，即可确认所拷贝元素的类型为内置类型或者自定义类型，但是这种方法效率比较低，时间复杂度为O（N^2）。  </p>
+<p>  <strong>内存萃取</strong><br>  先定义两个结构体判断所所传的类型是内置类型还是自定义类型  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//内置类型</span><br><span class="line">struct TureType</span><br><span class="line">&#123;	</span><br><span class="line">	static bool Get（）</span><br><span class="line">	&#123;return true；&#125;</span><br><span class="line">&#125;;</span><br><span class="line">//自定义类型</span><br><span class="line">struct FalseType</span><br><span class="line">&#123;	</span><br><span class="line">	static bool Get（）</span><br><span class="line">	&#123;return false；&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p> 然后定义一个模板  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">struct TypeTraits&#123;</span><br><span class="line"> typedef FalseType _isPodType;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+
+
+<p> 然后进行对所有内置类型模板特化：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//char类型</span><br><span class="line">template&lt;&gt;</span><br><span class="line">struct TypeTraits&lt;char&gt;&#123;</span><br><span class="line">	typedef TrueType _isPODType;</span><br><span class="line">&#125;;</span><br><span class="line">//int</span><br><span class="line">template&lt;&gt;</span><br><span class="line">struct TypeTraits&lt;int&gt;&#123;</span><br><span class="line">	typedef TrueType _isPODType;</span><br><span class="line">&#125;;</span><br><span class="line">//double ，float等内置类型</span><br></pre></td></tr></table></figure>
+
+
+<p> T为int：TypeTraits<int>已经特化过，程序运行时就会使用已经特化过的TypeTraits<int>, 该类中的<br>_IsPODType刚好为类TrueType，而TrueType中Get函数返回true，内置类型使用memcpy方式拷贝<br>T为string：TypeTraits<string>没有特化过，程序运行时使用TypeTraits类模板, 该类模板中的_IsPODType<br>刚好为类FalseType，而FalseType中Get函数返回true，自定义类型使用赋值方式拷贝    </string></int></int></p>
+<p> 总结为以下几点：  </p>
+<ul>
+<li>使用类模板和模板特化技术定义类型萃取类typetraits，内部类型定义类型falsetype</li>
+<li>对于内置类型，通过模板特化自定义类型typrtraits，内部定义类型truetype</li>
+<li>编译期间通过输入的类型生成对应的的typetraits，调用truetype或者falsetype的get()方法确认具体类型是否为自定义类型，根据返回值结果决定拷贝方式<blockquote>
+<p>内存萃取的优点：效率高，编译时确定类型，不占用运行时间</p>
+</blockquote>
+</li>
+</ul>
+
       
     </div>
 
@@ -618,7 +706,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-泛型编程"><span class="nav-number">1.</span> <span class="nav-text">1.泛型编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-函数模板"><span class="nav-number">2.</span> <span class="nav-text">2.函数模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-类模板"><span class="nav-number">3.</span> <span class="nav-text">3.类模板</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-泛型编程"><span class="nav-number">1.</span> <span class="nav-text">1.泛型编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-函数模板"><span class="nav-number">2.</span> <span class="nav-text">2.函数模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-类模板"><span class="nav-number">3.</span> <span class="nav-text">3.类模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-非类模板参数"><span class="nav-number">4.</span> <span class="nav-text">4. 非类模板参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-模板的特化"><span class="nav-number">5.</span> <span class="nav-text">5.模板的特化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-类模板特化应用之内存萃取"><span class="nav-number">6.</span> <span class="nav-text">6. 类模板特化应用之内存萃取</span></a></li></ol></div>
             
 
           </div>
