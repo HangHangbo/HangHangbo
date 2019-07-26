@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="继承看类型，多态看对象。">
+  <meta name="description" content="插入排序有两种方法：直接插入排序、希尔排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多态总结">
-<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/23/多态总结/index.html">
+<meta property="og:title" content="排序算法之插入排序">
+<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/26/排序算法之插入排序/index.html">
 <meta property="og:site_name" content="HangHangbo">
-<meta property="og:description" content="继承看类型，多态看对象。">
+<meta property="og:description" content="插入排序有两种方法：直接插入排序、希尔排序">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2019072321471513.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-07-23T14:47:47.657Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190726141425402.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-07-26T07:02:10.082Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多态总结">
-<meta name="twitter:description" content="继承看类型，多态看对象。">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019072321471513.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
+<meta name="twitter:title" content="排序算法之插入排序">
+<meta name="twitter:description" content="插入排序有两种方法：直接插入排序、希尔排序">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190726141425402.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
 
 
 
@@ -116,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/07/23/多态总结/">
+  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/07/26/排序算法之插入排序/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>多态总结 | HangHangbo</title>
+  <title>排序算法之插入排序 | HangHangbo</title>
   
 
 
@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/07/23/多态总结/">
+    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/07/26/排序算法之插入排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang Hangbo">
@@ -363,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">多态总结
+          <h1 class="post-title" itemprop="name headline">排序算法之插入排序
 
               
             
@@ -389,7 +389,7 @@
                 
               
 
-              <time title="创建时间：2019-07-23 22:45:45 / 修改时间：22:47:47" itemprop="dateCreated datePublished" datetime="2019-07-23T22:45:45+08:00">2019-07-23</time>
+              <time title="创建时间：2019-07-26 15:01:30 / 修改时间：15:02:10" itemprop="dateCreated datePublished" datetime="2019-07-26T15:01:30+08:00">2019-07-26</time>
             
 
             
@@ -428,49 +428,28 @@
       
 
       
-        <p> 继承看类型，多态看对象。</p>
-<a id="more"></a>    
-<p><strong>1.多态的概念：</strong><br>多态就是多种形态。具体点也就是完成每个行为，不同的对象去完成就会产生不同的状态。或者执行同一种行为产生不同的结果。多态看实际执行的对象，调用对应的代码，继承看类型。<br><strong>2.多态的前提：继承</strong><br>        1）调用函数的类型必须是指针类型或引用<br>        2）被调用函数必须为虚函数，并且被重写(函数名，参数，返回值全部相同)<br>        3）函数重写（覆写）：函数分别存在于子类和父类，函数名参数，返回值都相同（可以是协变）。<br>                协变：返回值的类型可以不同，但是必须分别是基类指针和派生类指针或者基类引用和派生类引用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class A&#123;&#125;;</span><br><span class="line">class B : public A &#123;&#125;;</span><br><span class="line">class Person &#123;</span><br><span class="line">public:</span><br><span class="line">	virtual A* f() &#123; return new A; &#125;</span><br><span class="line">&#125;;</span><br><span class="line">class Student : public Person &#123;</span><br><span class="line">public:</span><br><span class="line">	virtual B* f() &#123; return new B; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <p>插入排序有两种方法：直接插入排序、希尔排序  </p>
+<a id="more"></a>
+<h2 id="1-直接插入排序-（升序）"><a href="#1-直接插入排序-（升序）" class="headerlink" title="1.直接插入排序 （升序）"></a>1.直接插入排序 （升序）</h2><p>把待排序的记录按其关键码值的大小逐个插入到一个已经拍好序的有序序列中，直到所有的记录都插入完成为止，得到一个新的有序序列。<br>当插入第i个元素的时，前面的 i-1个元素都已经排好序了（arr[0],arr[1],arr[2],……arr[i-1],），此时用arr[i]和arr[i-1],arr[i-2]……的排序进行比较，找到第一个小于arr[i]的元素arr[j],将arr[i]插入到arr[j]后面位置，arr[j]和arr[i]之间的元素依次向后移动一个单位。<br>代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void InsertSort(int array[], int size)&#123;</span><br><span class="line">	for (int i = 1; i &lt; size; i++)&#123;</span><br><span class="line">		int k = array[i];</span><br><span class="line">		int j;</span><br><span class="line">		for (int j = i - 1; j &gt;= 0; --j)&#123;</span><br><span class="line">			if (array[j] &lt;= k)</span><br><span class="line">				break;</span><br><span class="line">			else </span><br><span class="line">				array[j + 1] = array[j];</span><br><span class="line">		&#125;</span><br><span class="line">		array[j + 1] = k;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>析构函数最好写成虚函数，让子类和父类的析构函数构成多态</strong><br>        编译器在底层会把父类和子类的析构函数改名为同类函数（destructor）。<br><strong>接口继承（多态）和实现继承（继承）：</strong><br>        普通函数的继承是一种实现继承，派生类继承了基类的函数，可以调用基类的函数，继承是函数是实现。虚函数的继承是一种接口继承，派生类继承的是基类虚函数的接口，目的是为了完成函数的重写，达成多态，继承的是接口。所有如果不实现多态，不要把函数定义成虚函数。<br><strong>重载</strong>：两个函数在同一个作用域，函数名相同，参数不相同<br><strong>重写（覆盖）</strong>：两个函数分别在基类和派生类作用域种，函数名/参数/返回值相同（协变除外）。两个函数必须为虚函数。<br><strong>重定义（隐藏）</strong>：两个函数分别在基类和派生类的作用域，函数名相同，基类和派生类的同名函数不构成重写就是重定义。<br><strong>抽象类</strong></p>
-<ul>
-<li>包含纯虚函数的类为抽象类：不完整的类，不能实例化出对象。</li>
-<li>抽象类：接口继承</li>
-<li>派生类继承后也不能实例化出对象，只有重写虚函数，派生类才能实例化出对象，纯虚函数规范了派生类必须重写，另外纯虚函数更体现了接口继承</li>
-</ul>
-<p><strong>fianl</strong>修饰基类的虚函数不能被继承<br><strong>override</strong>纯虚函数+override 修饰基类函数，迫使派生类函数强制完成基类函数的重写，如果没有完全重写虚函数就会编译出错。</p>
-<p>  <strong>多态的原理：</strong><br>  <img src="https://img-blog.csdnimg.cn/2019072321471513.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">  </p>
-<p> virtual  function pointer –&gt;_vfptrtr—-&gt;虚函数表指针</p>
+
 <blockquote>
-<p>我们发现b对象是8bytes，除了_b成员，还多一个__vfptr放在对象的前面(注意有些平台可能会放到对象的最后面，这个跟平台有关)，对象中的这个指针我们叫做虚函数表指针(v代表virtual，f代表function)。一个含有虚函数的类中都至少都有一个虚函数表指针，因为虚函数的地址要被放到虚函数表中，虚函数表也简称虚表。    </p>
+<p>总结：</p>
+<ul>
+<li>元素集合越接近有序，直接插入排序的时间效率越高</li>
+<li>时间复杂度：O(N^2)    最坏O(N^2)  最好的情况 O(N)</li>
+<li>空间复杂度：O(1)</li>
+<li>稳定性： 稳定  </li>
+</ul>
 </blockquote>
-<p>通过观察和测试，我们发现了以下几点问题：  </p>
-<ol>
-<li><p>派生类对象d中也有一个虚表指针，d对象由两部分构成，一部分是父类继承下来的成员，虚表指针也就<br>是存在部分的另一部分是自己的成员。</p>
-</li>
-<li><p>基类b对象和派生类d对象虚表是不一样的，这里我们发现Func1完成了重写，所以d的虚表中存的是重<br>写的Derive::Func1，所以虚函数的重写也叫作覆盖，覆盖就是指虚表中虚函数的覆盖。重写是语法的<br>叫法，覆盖是原理层的叫法。</p>
-</li>
-<li><p>另外Func2继承下来后是虚函数，所以放进了虚表，Func3也继承下来了，但是不是虚函数，所以不会<br>放进虚表。</p>
-</li>
-<li><p>虚函数表本质是一个存虚函数指针的指针数组，这个数组最后面放了一个nullptr。</p>
-</li>
-<li><p>总结一下派生类的虚表生成：  </p>
-<ul>
-<li>先将基类中的虚表内容拷贝一份到派生类虚表中  </li>
-<li>如果派生类重写了基类中某个虚函数，用派生类自己的虚函数覆盖虚表中基类的虚函数 </li>
-<li>派生类自己新增加的虚函数按其在派生类中的声明次序增加到派生类虚表的最后。。  </li>
-</ul>
-<p><strong>虚函数存放在代码段（vs下）</strong><br>栈：又叫堆栈，存放非静态局部变量/函数参数/返回值等，栈是向下增长的。<br>内存映射段：类似于I/O映射方式，用于装载一个共享的内存空间。用户可以使用系统接口创建共享内存，做进程通信。<br>堆：用于程序运行时动态内存分配，堆是向上增长的。<br>数据段：储存全局数据和静态数据。<br>代码区：可执行的代码/只读常量。</p>
-<p><strong>多态的实现：</strong><br>多态看对象，父类对象在调用它的虚函数时，访问的是父类中的虚表，从这里面拿到它对应的函数。子类同理；</p>
-<ul>
-<li>只要类中有虚函数，对象模型中就会存放一个虚表指针，虚表指针指向虚表，虚表本质上为函数指针数组，虚表在vs下存放在代码段</li>
-<li>本质上是通过虚表实现：程序在运行的时候，根据引用或者指针指向的对象，访问对象模型中的虚表指针，获取虚表中对应位置的函数指针，调用对应的函数</li>
-<li>子类的虚表和父类的虚表个数相同，子类自己定义的虚表放在第一个继承的虚表中</li>
-</ul>
-</li>
-</ol>
-<p><strong>静态绑定：</strong>又称为前期绑定，在程序编译期间确定了程序的行为。如，函数重载。<br><strong>动态绑定：</strong>又称为后期绑定，在程序运行期间，根据具体拿到的类型确定成雪的具体行为，调用具体的函数。</p>
+<pre><code>可优化的地方：在寻找插入位置arr[j+1]时，可使用二分查找的方法快速计算插入位置。</code></pre><h2 id="2-希尔排序（缩小增量排序）"><a href="#2-希尔排序（缩小增量排序）" class="headerlink" title="2.希尔排序（缩小增量排序）"></a>2.希尔排序（缩小增量排序）</h2><p>直接插入排序的时间复杂度为O(n^2),但是若待排序序列为“正序”时，且数据量比较小，其时间复杂度可提高至O(n),由此可见若待排序列越接近有序，直接插入排序的效率也就越高。   </p>
+<p>希尔排序是对直接插入排序的优化。希尔排序基本思想就是：先将整个待排序列分割成若干个自序列分别进行直接插入排序，待整个序列接近基本有序时再对整个序列进行一次直接插入排序。  </p>
+<p>  希尔排序的具体流程：<br>  <img src="https://img-blog.csdnimg.cn/20190726141425402.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70" alt="!\[在这里插入图片描述\](https://img-blog.csdnimg.cn/20190726140710248.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFF"><br>   初始化一段数据：9  1    2    5    7    4    8    6    3    5   分别为N0~N9；<br>   第一步先将待排序列分为若干组，{N0,N5},{N1,N5},{N2,N7},{N3,N8},{N4,N9},每一个子序列内部进行直接插入排序，排序结果如图第三行，这个过程被成为一次希尔排序。<br>   然后进行第二次希尔排序将第一次排序得到的序列再此分组，因为已经经历过一次排序，序列“比较有序”所以第二次分组每组多分几个元素，然后每组内进行直接插入排序。<br>   执行若干次希尔排序直至待排序列有序，希尔排序结束。<br>   <strong>分组问题和判断待排序列有序问题：</strong><br>   从上述的排序过程可见，希尔排序的一个特点是：子序列的构成不是简单的“逐段分割”而是将相邻某个”增量”的记录组成一个子序列。<br>   如上例子中，第一趟排序时的增量为 5，第二趟排序时的增量为2，第三次排序也就是最后一次排序时增量为1，此时进行的希尔排序就是直接插入排序，但是待排序列已经基本接近有序。<br>   因此当增量为1的时候，是希尔排序的最后一次排序。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">void InsertSortGap(int array[], int size, int gap)&#123;</span><br><span class="line">	for (int i = gap; i &lt; size; i++)&#123;</span><br><span class="line">		int k = array[i];</span><br><span class="line">		int j;</span><br><span class="line">		for ( j = i - gap; j &gt;= 0; j -= gap)&#123;</span><br><span class="line">			if (array[j] &lt;= k)</span><br><span class="line">				break;</span><br><span class="line">			else</span><br><span class="line">				array[j + gap] = array[j];</span><br><span class="line">		&#125;</span><br><span class="line">		array[j + gap] = k;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">void ShellSort(int array[], int size)&#123;</span><br><span class="line">	int gap = size;</span><br><span class="line">	while (1)&#123;</span><br><span class="line">		gap = gap / 3 + 1;</span><br><span class="line">		//gap 比较大的数 --&gt; 小 ---&gt;1 结束</span><br><span class="line">		InsertSortGap(array, size, gap);</span><br><span class="line">		if (gap == 1)</span><br><span class="line">			break;</span><br><span class="line">	&#125;</span><br><span class="line">	Print(array, size);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 
       
     </div>
@@ -501,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/HangHangbo/2019/07/23/继承/" rel="next" title="继承">
-                <i class="fa fa-chevron-left"></i> 继承
+              <a href="/HangHangbo/2019/07/23/异常/" rel="next" title="异常">
+                <i class="fa fa-chevron-left"></i> 异常
               </a>
             
           </div>
@@ -510,10 +489,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/HangHangbo/2019/07/23/异常/" rel="prev" title="异常">
-                异常 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -557,8 +532,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -606,6 +590,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-直接插入排序-（升序）"><span class="nav-number">1.</span> <span class="nav-text">1.直接插入排序 （升序）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-希尔排序（缩小增量排序）"><span class="nav-number">2.</span> <span class="nav-text">2.希尔排序（缩小增量排序）</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
