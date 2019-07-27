@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="插入排序有两种方法：直接插入排序、希尔排序">
+  <meta name="description" content="插入排序：直接插入排序、希尔排序选择排序：直接选择排序、堆排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="排序算法之插入排序">
+<meta property="og:title" content="排序算法">
 <meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/26/排序算法之插入排序/index.html">
 <meta property="og:site_name" content="HangHangbo">
-<meta property="og:description" content="插入排序有两种方法：直接插入排序、希尔排序">
+<meta property="og:description" content="插入排序：直接插入排序、希尔排序选择排序：直接选择排序、堆排序">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190726141425402.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-07-26T07:02:10.082Z">
+<meta property="og:updated_time" content="2019-07-27T14:58:12.356Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="排序算法之插入排序">
-<meta name="twitter:description" content="插入排序有两种方法：直接插入排序、希尔排序">
+<meta name="twitter:title" content="排序算法">
+<meta name="twitter:description" content="插入排序：直接插入排序、希尔排序选择排序：直接选择排序、堆排序">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190726141425402.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0JUX3poYg==,size_16,color_FFFFFF,t_70">
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>排序算法之插入排序 | HangHangbo</title>
+  <title>排序算法 | HangHangbo</title>
   
 
 
@@ -363,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">排序算法之插入排序
+          <h1 class="post-title" itemprop="name headline">排序算法
 
               
             
@@ -389,12 +389,24 @@
                 
               
 
-              <time title="创建时间：2019-07-26 15:01:30 / 修改时间：15:02:10" itemprop="dateCreated datePublished" datetime="2019-07-26T15:01:30+08:00">2019-07-26</time>
+              <time title="创建时间：2019-07-26 15:01:30" itemprop="dateCreated datePublished" datetime="2019-07-26T15:01:30+08:00">2019-07-26</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-27 22:58:12" itemprop="dateModified" datetime="2019-07-27T22:58:12+08:00">2019-07-27</time>
               
             
           </span>
@@ -428,7 +440,7 @@
       
 
       
-        <p>插入排序有两种方法：直接插入排序、希尔排序  </p>
+        <p>插入排序：直接插入排序、希尔排序<br>选择排序：直接选择排序、堆排序  </p>
 <a id="more"></a>
 <h2 id="1-直接插入排序-（升序）"><a href="#1-直接插入排序-（升序）" class="headerlink" title="1.直接插入排序 （升序）"></a>1.直接插入排序 （升序）</h2><p>把待排序的记录按其关键码值的大小逐个插入到一个已经拍好序的有序序列中，直到所有的记录都插入完成为止，得到一个新的有序序列。<br>当插入第i个元素的时，前面的 i-1个元素都已经排好序了（arr[0],arr[1],arr[2],……arr[i-1],），此时用arr[i]和arr[i-1],arr[i-2]……的排序进行比较，找到第一个小于arr[i]的元素arr[j],将arr[i]插入到arr[j]后面位置，arr[j]和arr[i]之间的元素依次向后移动一个单位。<br>代码实现：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void InsertSort(int array[], int size)&#123;</span><br><span class="line">	for (int i = 1; i &lt; size; i++)&#123;</span><br><span class="line">		int k = array[i];</span><br><span class="line">		int j;</span><br><span class="line">		for (int j = i - 1; j &gt;= 0; --j)&#123;</span><br><span class="line">			if (array[j] &lt;= k)</span><br><span class="line">				break;</span><br><span class="line">			else </span><br><span class="line">				array[j + 1] = array[j];</span><br><span class="line">		&#125;</span><br><span class="line">		array[j + 1] = k;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -450,6 +462,53 @@
 
 
 
+<blockquote>
+<p>总结：</p>
+<ul>
+<li>希尔排序是对直接插入排序的优化。</li>
+<li>当gap &gt; 1时都是预排序，目的是让数组更接近于有序。当gap == 1时，数组已经接近有序的了，这样就会很快。这样整体而言，可以达到优化的效果。我们实现后可以进行性能测试的对比。</li>
+<li>时间复杂度：O(N^2)    </li>
+<li>稳定性： 不稳定      </li>
+</ul>
+</blockquote>
+<p> 选择排序：每一趟在n-i+1个有数据中选取最大（小）的数据，作为有序数组的第i个元素。  </p>
+<h2 id="3-直接排序"><a href="#3-直接排序" class="headerlink" title="3.直接排序"></a>3.直接排序</h2><ul>
+<li><p>在元素集合array[i]~array[j]中选择关键码最小的元素</p>
+</li>
+<li><p>若他不是这组元素中的第一个元素，就将它与这组元素中的第一个元素交换</p>
+</li>
+<li><p>在剩余的array[i+1]~array[n-1]集合中，重复以上步骤，直到结合只剩下一个元素，排序完成  </p>
+<p>代码实现：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void SelectSort(int array[], int size)&#123;</span><br><span class="line">	int min;//记录最小元素的下标</span><br><span class="line">	for (int i = 0; i &lt; size - 1; i++)&#123;</span><br><span class="line">		min = i;</span><br><span class="line">		for (int j = i + 1; j &lt; size; j++)&#123;</span><br><span class="line">			if (array[j] &lt; array[min])&#123;</span><br><span class="line">				min = j;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if (i != min)&#123;</span><br><span class="line">			int k = array[i];</span><br><span class="line">			array[i] = array[min];</span><br><span class="line">			array[min] = k;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	Print(array, size);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>总结:</p>
+<ul>
+<li>时间复杂度：O(N^2)</li>
+<li>稳定性：不稳定  </li>
+</ul>
+</blockquote>
+<h2 id="4-堆排序"><a href="#4-堆排序" class="headerlink" title="4.堆排序"></a>4.堆排序</h2><p>  堆排序是利用堆积树这种数据机构所设计的一种排序算法，它是通过堆来进行选择数据，需要注意的是排升序建大堆，排降序建小堆。<br>  堆的逻辑结构就是一个完全二叉树，存储结构是一个一维数组，数组中的每一个元素满足  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//小堆</span><br><span class="line">array[i]&lt;=array[i*2+1];</span><br><span class="line">array[i]&lt;=array[i*2+2];</span><br><span class="line">//或</span><br><span class="line">//大堆</span><br><span class="line">array[i]&gt;=array[i*2+1];</span><br><span class="line">array[i]&gt;=array[i*2+2];</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>节点node的左节点的数组下标是node<em>2+1,右节点的数组下标是node</em>2+2，根节点的数组下标为0。</p>
+</blockquote>
+<p>   处理一个待排序的序列，用堆排序进行排序分为以下几步：<br>   1.建堆升序建大堆，降序建立小堆。  </p>
+<blockquote>
+<p>建大堆只能将待排序列中的最大值放在跟节点，小堆反之。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> void GreateHeap(int array[], int size)&#123;</span><br><span class="line">	for (int i = (size - 2) / 2; i &gt;= 0; i--)&#123;</span><br><span class="line">		AdjustDown(array, size, i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> void AdjustDown(int array[], int size, int root)&#123;</span><br><span class="line"></span><br><span class="line">	int i = 2 * root + 1;</span><br><span class="line">	int j = 2 * root + 2;</span><br><span class="line"></span><br><span class="line">	if (i &gt;= size)&#123;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	int m = i;</span><br><span class="line">	if ( j&lt;size &amp;&amp; array[j]&gt;array[i])</span><br><span class="line">		m = j;</span><br><span class="line"></span><br><span class="line">	if (array[m] &gt; array[root])&#123;</span><br><span class="line">		Swap(array + m, array + root);</span><br><span class="line">		AdjustDown(array, size, m);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>   2.经过一次建堆操作，找出了最大数，将这个最大的数交换到待排序列的最后位置，然后再对这个待排序列除去交换到最后位置的哪个元素再进行建堆操作，确认新的最值，然后再将新确认的最值和新的序列的最后一位元素继续交换，重复以上操作，直到新的待排序列只剩下一个元素，得到的序列就是升序（降序）的。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void HeapSort(int array[], int size)&#123;</span><br><span class="line">	GreateHeap(array, size);</span><br><span class="line">	for (int i = 0; i &lt; size; i++)&#123;</span><br><span class="line">		Swap(array, array + size - i - 1);</span><br><span class="line">		AdjustDown(array, size-1 - i, 0);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>总结：<br>时间复杂度:O(N*logN)<br>空间复杂度:O(1)<br>稳定性：不稳定</p>
+</blockquote>
 
       
     </div>
@@ -601,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-直接插入排序-（升序）"><span class="nav-number">1.</span> <span class="nav-text">1.直接插入排序 （升序）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-希尔排序（缩小增量排序）"><span class="nav-number">2.</span> <span class="nav-text">2.希尔排序（缩小增量排序）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-直接插入排序-（升序）"><span class="nav-number">1.</span> <span class="nav-text">1.直接插入排序 （升序）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-希尔排序（缩小增量排序）"><span class="nav-number">2.</span> <span class="nav-text">2.希尔排序（缩小增量排序）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-直接排序"><span class="nav-number">3.</span> <span class="nav-text">3.直接排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-堆排序"><span class="nav-number">4.</span> <span class="nav-text">4.堆排序</span></a></li></ol></div>
             
 
           </div>
