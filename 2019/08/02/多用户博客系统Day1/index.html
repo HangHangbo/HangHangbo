@@ -96,21 +96,17 @@
 
 
 
-  <meta name="description" content="数字签名，就是只有信息的发送者才能产生的别人无法伪造的一段数字串，这段数字串同时也是对信息的发送者发送信息真实性的一个有效证明。 是一种类似写在纸上的普通的物理签名 ，比如合同签名。">
+  <meta name="description" content="多用户博客系统需求：   支持多用户（1号用户为管理员身份，其他用户为普通用户） 实现所有用户对自己所些的文章的增删改，以及对所有文章的查阅功能 实现管理员的对标签页的增删改查功能 实现一个用户登陆页面，根据用户的等级生成权限不同的页面   模块划分：   客户端：网页的形式 服务器端：HTTP协议 客户端：实现对数据的增删查改（数据库：Mysql）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机签名">
-<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/21/计算机签名/index.html">
+<meta property="og:title" content="多用户博客系统Day1">
+<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/08/02/多用户博客系统Day1/index.html">
 <meta property="og:site_name" content="HangHangbo">
-<meta property="og:description" content="数字签名，就是只有信息的发送者才能产生的别人无法伪造的一段数字串，这段数字串同时也是对信息的发送者发送信息真实性的一个有效证明。 是一种类似写在纸上的普通的物理签名 ，比如合同签名。">
+<meta property="og:description" content="多用户博客系统需求：   支持多用户（1号用户为管理员身份，其他用户为普通用户） 实现所有用户对自己所些的文章的增删改，以及对所有文章的查阅功能 实现管理员的对标签页的增删改查功能 实现一个用户登陆页面，根据用户的等级生成权限不同的页面   模块划分：   客户端：网页的形式 服务器端：HTTP协议 客户端：实现对数据的增删查改（数据库：Mysql）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190721224401705.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190721224504491.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190721224653247.png">
-<meta property="og:updated_time" content="2019-07-21T14:48:49.515Z">
+<meta property="og:updated_time" content="2019-08-02T12:28:37.881Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计算机签名">
-<meta name="twitter:description" content="数字签名，就是只有信息的发送者才能产生的别人无法伪造的一段数字串，这段数字串同时也是对信息的发送者发送信息真实性的一个有效证明。 是一种类似写在纸上的普通的物理签名 ，比如合同签名。">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190721224401705.png">
+<meta name="twitter:title" content="多用户博客系统Day1">
+<meta name="twitter:description" content="多用户博客系统需求：   支持多用户（1号用户为管理员身份，其他用户为普通用户） 实现所有用户对自己所些的文章的增删改，以及对所有文章的查阅功能 实现管理员的对标签页的增删改查功能 实现一个用户登陆页面，根据用户的等级生成权限不同的页面   模块划分：   客户端：网页的形式 服务器端：HTTP协议 客户端：实现对数据的增删查改（数据库：Mysql）">
 
 
 
@@ -118,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/07/21/计算机签名/">
+  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/08/02/多用户博客系统Day1/">
 
 
 
@@ -128,7 +124,7 @@
   };
 </script>
 
-  <title>计算机签名 | HangHangbo</title>
+  <title>多用户博客系统Day1 | HangHangbo</title>
   
 
 
@@ -348,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/07/21/计算机签名/">
+    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/08/02/多用户博客系统Day1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang Hangbo">
@@ -365,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">计算机签名
+          <h1 class="post-title" itemprop="name headline">多用户博客系统Day1
 
               
             
@@ -391,7 +387,7 @@
                 
               
 
-              <time title="创建时间：2019-07-21 22:48:13 / 修改时间：22:48:49" itemprop="dateCreated datePublished" datetime="2019-07-21T22:48:13+08:00">2019-07-21</time>
+              <time title="创建时间：2019-08-02 00:05:37 / 修改时间：20:28:37" itemprop="dateCreated datePublished" datetime="2019-08-02T00:05:37+08:00">2019-08-02</time>
             
 
             
@@ -430,53 +426,127 @@
       
 
       
-        <p>数字签名，就是只有信息的发送者才能产生的别人无法伪造的一段数字串，这段数字串同时也是对信息的发送者发送信息真实性的一个有效证明。 是一种类似写在纸上的普通的物理签名 ，比如合同签名。<br>  <a id="more"></a><br> <strong>数字签名有两种功效：</strong> </p>
-<ul>
-<li>能确定信息确实是发送方签名并发送出来的，因为别人假冒不了发送方的签名。  </li>
-<li>数字签名能确定发送信息的完整性。因为数字签名的特点是它代表了文件的特征，文件如果发生改变，数字摘要的值也将会发生改变。不同的文件将得到不同的数字摘要。  </li>
-</ul>
-<p>常用的数字签名方法主要有：HASH算法 ，此算法主要包括MD（Message-Digest，信息摘要）和SHA（安全散列算法,Secure Hash Algorithm）两类 。Digital Signature Algorithm (DSA)， ECDSA (Elliptic Curve Digital SignatureAlgorithm)，椭圆曲线数字签名算法，微软产品的序列号验证算法使用的就是ECDSA。与传统的数字签名算法相比，速度快，强度高，签名短。   </p>
+        <h2 id="多用户博客系统"><a href="#多用户博客系统" class="headerlink" title="多用户博客系统"></a>多用户博客系统</h2><p>需求：</p>
+<blockquote>
 <ol>
-<li><strong>what’s MD5</strong>  </li>
-</ol>
-<p>MD5是由Ron Rivest在1991设计的一种信息摘要(message-digest )算法，当给定任意长度的信息，MD5会产生一个固定的128位“指纹”或者叫信息摘要。从理论的角度，所有的信息产生的MD5值都不同，也无法通过给定的MD5值产生任何信息，即不可逆。<br>MD5算法在RFC 1321（Request For Comments，征求修正意见书）做了详细描述。<br>1.1 MD5功能特点  </p>
-<pre><code>1.输入任意长度的信息，经过处理，输出为128位的信息（数字指纹）     
-
-2.不同的输入得到的不同的结果（唯一性）。要使两个不同的信息产生相同的摘要，操作数量级在2^64次方。  
-
-3.根据128位的输出结果不可能反推出输入的信息。根据给定的摘要反推原始信息，它的操作数量级在2^128次。  </code></pre><p>  1.2 MD5争议<br>MD5是否为加密算法：<br>&lt;1&gt;：MD5不能从密文反过来得到原文，即没有解密算法，故不能称为加密算法；<br>&lt;2&gt;：MD5处理后看不到原文，即已经将原文加密，故MD5属于加密算法。</p>
-<p>  1.3 MD5用途<br>1&gt;防止信息被篡改  </p>
-<pre><code>a) 电邮文档一致性验证：在发送一个电子文档前，先得到MD5的输出结果a。然后在对方收到电子文档后，对方也得到一个MD5的输出结果b。如果a与b一样就代表中途未被篡改。  
-
-b)文件下载安全验证：在下载网络文件/程序时，为了防止不法分子在安装程序中添加木马，一般会在网站上公布由安装文件得到的MD5输出结果。用户下载完之后，在本地计算MD5值，在于网站公布的MD5值作比较，验证文件是否完整和安全。  </code></pre><p>   c)SVN update:SVN在检测文件是否在CheckOut后被修改过，也是用到了MD5.<br>2&gt;防止直接看到密码明文：现在很多网站在数据库存储用户的密码的时候都是存储用户密码的MD5值。就算不法分子得到数据库种用户密码的MD5值，也无法知道用户的密码。比如在UNIX系统中用户的密码就是以MD5（或其它类似的算法）经加密后存储在文件系统中。当用户登录的时候，系统把用户输入的密码计算成MD5值，然后再去和保存在文件系统中的MD5值进行比较，进而确定输入的密码是否正确。通过这样的步骤，系统在并不知道用户密码的明码的情况下就可以确定用户登录系统的合法性。这不但可以避免用户的密码被具有系统管理员权限的用户知道，而且还在一定程度上增加了密码被破解的难度。  </p>
-<p>3&gt;防止抵赖（数字签名）：这需要一个第三方认证机构。例如A写了一个文件，认证机构对此文件用MD5算法产生摘要信息并做好记录。若以后A说这文件不是他写的，权威机构只需对此文件重新产生摘要信息，然后跟记录在册的摘要信息进行比对，相同的话，就证明是A写的了。这就是所谓的“数字签名”。</p>
-<blockquote>
-<p>在这里我就总结一下我在实现MD5算法对文件和对字符串计算摘要步骤。  </p>
-<ol start="2">
-<li>MD5算法步骤<br>MD5的算法输入为以bit为单位的信息(1 byte=8 * bit),经过处理，得到一个128bit的摘要信息，这128位的摘要信息在计算过程中被分为4个32bit的子信息，存储在4个buffer（a_,b_,c_,d_）中，它们初始化位固定常量。MD5算法饭后使用每一个512bit的数据块去改变a_,b_,c_d_中的值，所有的数据处理完之后，把最终的a_,b_,c_d_拼接在一起，组成一个128bit的输出。处理每一块数据有四种类似的过程，每一个过程由16个相似的操作流程组成，操作流中包括非线性函数，相加以及循环左移。  </li>
+<li>支持多用户（1号用户为管理员身份，其他用户为普通用户）</li>
+<li>实现所有用户对自己所些的文章的增删改，以及对所有文章的查阅功能</li>
+<li>实现管理员的对标签页的增删改查功能</li>
+<li>实现一个用户登陆页面，根据用户的等级生成权限不同的页面</li>
 </ol>
 </blockquote>
-<p>  具体算法大致分为5个步骤：  </p>
+<p>模块划分：</p>
+<blockquote>
 <ul>
-<li><p>添加填充位</p>
-</li>
-<li><p>添加bit长度</p>
-</li>
-<li><p>初始化MD buffer（a_,b_,c_d_）</p>
-</li>
-<li><p>按512位数据逐个处理输入信息</p>
-</li>
-<li><p>摘要输出  </p>
-<blockquote>
-<p>我在这里就总结一个按512位数据块处理输入信息，其他四步在源码中有详细注释介绍<br><a href="https://github.com/HangHangbo/C_Plusplus/tree/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AD%BE%E5%90%8D" target="_blank" rel="noopener">MD5实现源代码</a>     </p>
-</blockquote>
-</li>
+<li>客户端：网页的形式</li>
+<li>服务器端：HTTP协议</li>
+<li>客户端：实现对数据的增删查改（数据库：Mysql）</li>
 </ul>
-<h3 id="按512位数据逐块处理输入信息"><a href="#按512位数据逐块处理输入信息" class="headerlink" title="按512位数据逐块处理输入信息"></a>按512位数据逐块处理输入信息</h3><p> 一组chunk 16个字节 512个bit<br>4个计算机摘要A，B，C，D每个都是4个字节<br>初始化计算机摘要：<br>A=0X 67 45 12 01；<br>B=0X 89 ab cd ef;<br>C=0X fe dc ba 98;<br>D=0X10 32 54 76;<br>按一个处理单位(chunk)512位数据逐个处理输入数据<br>每个chunk 经历4个函数（F，G，H，I）处理，这四个函数输入3个4字节的值，产生一个4字节的输出，<br>F(x,y,z) = (x &amp; y) | ((<del>x) &amp; z)<br>G(x,y,z) = (x &amp; z) | ( y &amp; (</del>z))<br>H(x,y,z) = x ^ y ^ z<br>I(x,y,z) = y ^ (x | (~z))</p>
-<p>在处理一个chuck（512bit 64byte）的数据时，将这个chuck 分为16组4字节数据，一个chuck经理4轮处理，每轮都会把chunk的数据处理一遍，每轮有16个相似的子操作，最后一个chunk的数据要进行64个子操作</p>
-<p>计算之前先保存MD buffer的当前值<br>a=A，b=B，c=C d=D；<br>第一轮操作：F函数操作（0&lt;=i&lt;=15）对前16个字节进行操作<br>F = F(b, c, d)<br>d = c<br>c =b<br>b = b + shift((a + F + k[i] + chunk[g]), s[i])<br>a = d<br> F 是F函数的返回值<br> K是一个64位元素的表，表中的元素值由sin函数构建，K[i]等于2^(32) * abs(sin(i))的整数<br>部分，<br>k[i]=(size_t)(abs(sin(i+1))*pow(2,32));<br>因为i是数组下标所以i+1<br> g 和i存在对应关系<br>if (0 &lt;= i &lt; 16) g = i;<br>if (16 &lt;= i &lt; 32) g = (5 * i + 1) % 16;<br>if (32 &lt;= i &lt; 48) g = (3 * i + 5) % 16;<br>if(48 &lt;= i &lt; 63) g = (7 * i) % 16;<br> shift 是一个循环左移（按位操作）函数左参数是要操作的数，右参数是左移多少位<br>size_t s[] = { 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7,<br>12, 17, 22, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20,<br>4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 6, 10,<br>15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21 };<br>chunk的后48字节的操作分为三部分，16<del>31 G函数 32</del>47H函数 48~63 I函数<br>每次完成以上操作便要更新MDbuffer的ABCD<br>A+=a；<br>B+=b；<br>C+=c；<br>D+=d；</p>
-<p>摘要输出：<br>拼接4gebuffer中的摘要信息，以A中的低地址开始，D中的高地址结束，最终输出的是一个128bit 16byte的摘要信息 的16进制表示，故输出一个32位长度的摘要信息   </p>
-<p>   测试结果：<br>   文件摘要：<img src="https://img-blog.csdnimg.cn/20190721224401705.png" alt="在这里插入图片描述"><br>   字符串摘要：<br>我的计算结果：   <img src="https://img-blog.csdnimg.cn/20190721224504491.png" alt="在这里插入图片描述"><br>在线加密工具计算结果：<br><img src="https://img-blog.csdnimg.cn/20190721224653247.png" alt="在这里插入图片描述">  </p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="从数据库开始"><a href="#从数据库开始" class="headerlink" title="从数据库开始"></a>从数据库开始</h2><h3 id="1-创建一个数据库（blog-system）"><a href="#1-创建一个数据库（blog-system）" class="headerlink" title="1.创建一个数据库（blog_system）"></a>1.创建一个数据库（blog_system）</h3><p>​    1.1创建一个博客表(blog_table)</p>
+<p>表中存储数据及数据类型：</p>
+<blockquote>
+<p>博客id        blog_id (int not null primary key auto_increment)</p>
+<p>博客标题    title(varchar(50))</p>
+<p>博客正文    content(text)</p>
+<p>作者id        author_id(int)</p>
+<p>标签id        tag_id(int)</p>
+<p>创建时间    create_time(varchar(50))</p>
+</blockquote>
+<p>​    1.2标签表(tag_table)</p>
+<blockquote>
+<p>标签id tag_id(int not null primary key auto_increment)</p>
+<p>标签名  tag_name（varchar）</p>
+</blockquote>
+<p>​    1.2用户表(作者表、author_table)</p>
+<blockquote>
+<p>用户id    author_id(int not null primary key auto_increment)</p>
+<p>用户名    user_name（varchar）</p>
+<p>用户密码    passwords（varchar）</p>
+</blockquote>
+<p>  1.3 将建标的mysql全写在一个sql文件中，方便日后修改，查看，并使用”&lt;”重定向的命令创建数据库。</p>
+<h3 id="2-使用mysql-API创建一些类来封装数据路操作"><a href="#2-使用mysql-API创建一些类来封装数据路操作" class="headerlink" title="2.使用mysql API创建一些类来封装数据路操作"></a>2.使用mysql API创建一些类来封装数据路操作</h3><p>2.1 注备工作：</p>
+<ul>
+<li>和数据库建立连接，初始化句柄</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">MYSQL *<span class="title">mysql_real_connect</span><span class="params">(MYSQL *mysql, <span class="keyword">const</span> <span class="keyword">char</span> *host, <span class="keyword">const</span> <span class="keyword">char</span> *user, <span class="keyword">const</span> <span class="keyword">char</span> *passwd, <span class="keyword">const</span> <span class="keyword">char</span> *db, <span class="keyword">unsigned</span> <span class="keyword">int</span> port, <span class="keyword">const</span> <span class="keyword">char</span> *unix_socket, <span class="keyword">unsigned</span> <span class="keyword">long</span> clientflag)</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果连接失败打印错误</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const char *mysql_error(MYSQL *mysql)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置字符编码 为utf8（正文会出现中文，mysql默认utf8编码）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int mysql_set_character_set(MYSQL *mysql, const char *csname)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建一个和数据库断开连接的接口</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">static void MySQLRelease(MYSQL* connect_fd)&#123;</span><br><span class="line">        mysql_close(connect_fd);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建一个操作博客表的类（BlogTable）</p>
+<p>相关参数同一使用json格式，方便扩展</p>
+<p>对数据库操作大致总结为以下几点：</p>
+<blockquote>
+<ol>
+<li>创建sql语句</li>
+<li>分析参数中的数据，拼接sql语句</li>
+<li>执行mysql语句</li>
+<li>判断执行结果，打印错误，返回false</li>
+<li>如果要从数据库获取数据，还要有以下几步</li>
+<li>获取执行结果，获取的执行结果为MYSQL_RES* 类型，通过mysql_num_rows获取结果中有几条数据，对获取结果进行校验</li>
+<li>通过mysql_fetch_row 循环获取每一条执行结果，每条数据写入一个Json对象中，并把json对象，添加到输出的json对象级中（Jsons-&gt;append(Json)）</li>
+<li>返回true，操作完成</li>
+</ol>
+</blockquote>
+<p>实现功能：</p>
+<ol>
+<li>增（Insert）</li>
+</ol>
+<blockquote>
+<ul>
+<li>在添加一片博客的时候，正文内容可能非常大，正文内容就不能存放在栈上，必须在堆上为其开辟一段空间。</li>
+<li>拼接的sql语句因为正文的缘故，也不能在栈上存放，必须在堆上开辟空间</li>
+<li>在堆上开辟空间就存在在不使用这段空间时，就要对着段空间进行释放，但是如果在之后使用者段空间的时候因为各种原因会导致，内存内释放，造成内存泄流，所以，将上面提到的量段空间交给智能指针管理（unique_ptr）</li>
+<li>博客正文中可能会出现一些特殊符号(\n, ‘’, “” 等)，会导致拼接的sql语句存在问题，这里就需要对正文内容进行转义，使用函数unsigned long STDCALL mysql_real_escape_string(MYSQL * mysql, char * to, const char * from, unsigned long length)，进行转义，但是用来存储转义之后的内容的to指针所指向的大小，在文档中规定是转义前存放空间的2倍加1字节的空间</li>
+</ul>
+</blockquote>
+<ol start="2">
+<li>删（Delete）</li>
+<li>改（Update）</li>
+<li>查（Select）<ul>
+<li>根据tag_id查</li>
+<li>根据author_id查</li>
+<li>所有博客</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>所有用户可以对博客表进行操作，但是智能对自己发表的博客进行删和改操作</p>
+</blockquote>
+<p>2.标签表（TagTable）</p>
+<blockquote>
+<p>只有管理员才能进行标签页的增，查</p>
+</blockquote>
+<ul>
+<li>增（Insert）</li>
+<li>删（Delete）</li>
+<li>查（Select）</li>
+</ul>
+<p>3.作者表（AuthorTable）</p>
+<ul>
+<li>增（Insert）</li>
+<li>改（Update）</li>
+</ul>
+<blockquote>
+<p>新用户注册作者表增</p>
+<p>用户改登陆密码，进行改操作</p>
+<p>查操作之后管理员身份可以使用</p>
+</blockquote>
 
       
     </div>
@@ -507,8 +577,8 @@ b)文件下载安全验证：在下载网络文件/程序时，为了防止不�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/HangHangbo/2019/07/19/HMTL基础总结/" rel="next" title="HMTL基础总结">
-                <i class="fa fa-chevron-left"></i> HMTL基础总结
+              <a href="/HangHangbo/2019/07/31/顺序表和链表/" rel="next" title="数据结构">
+                <i class="fa fa-chevron-left"></i> 数据结构
               </a>
             
           </div>
@@ -516,10 +586,6 @@ b)文件下载安全验证：在下载网络文件/程序时，为了防止不�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/HangHangbo/2019/07/23/模板/" rel="prev" title="模板">
-                模板 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -632,7 +698,7 @@ b)文件下载安全验证：在下载网络文件/程序时，为了防止不�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#按512位数据逐块处理输入信息"><span class="nav-number">1.</span> <span class="nav-text">按512位数据逐块处理输入信息</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#多用户博客系统"><span class="nav-number">1.</span> <span class="nav-text">多用户博客系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从数据库开始"><span class="nav-number">2.</span> <span class="nav-text">从数据库开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建一个数据库（blog-system）"><span class="nav-number">2.1.</span> <span class="nav-text">1.创建一个数据库（blog_system）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用mysql-API创建一些类来封装数据路操作"><span class="nav-number">2.2.</span> <span class="nav-text">2.使用mysql API创建一些类来封装数据路操作</span></a></li></ol></li></ol></div>
             
 
           </div>
