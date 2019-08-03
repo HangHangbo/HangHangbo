@@ -344,6 +344,260 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/08/02/多用户博客系统Day2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang Hangbo">
+      <meta itemprop="description" content="C/C++，Linux">
+      <meta itemprop="image" content="/HangHangbo/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HangHangbo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/HangHangbo/2019/08/02/多用户博客系统Day2/" class="post-title-link" itemprop="url">多用户博客系统Day2</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-02 21:46:15" itemprop="dateCreated datePublished" datetime="2019-08-02T21:46:15+08:00">2019-08-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-03 23:21:24" itemprop="dateModified" datetime="2019-08-03T23:21:24+08:00">2019-08-03</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="服务器设计"><a href="#服务器设计" class="headerlink" title="服务器设计"></a>服务器设计</h2><p>采用restful风格API设计方式：使用不同的HTTP方法表示不同的含义：</p>
+<blockquote>
+<ul>
+<li>POST方法表示新增资源</li>
+<li>GET方法表示查看资源</li>
+<li>PUT方法表示修改</li>
+<li>DELETE方法表示删除</li>
+</ul>
+</blockquote>
+<p>使用path表示要操作的资源，继续使用Json来组织body中的数据</p>
+<p>实现一个http服务器，采用第三方库cpp-httplib来进行开发，实现起来能简单点。</p>
+<blockquote>
+<p>cpp-httplib 一个header-only的跨平台HTTP/HTTPS服务器和客户端C++库</p>
+<p>选择这个库的几个原因：</p>
+<ul>
+<li>开源项目，免费</li>
+<li>安装简单，只用把httplib,放在项目目录下就能使用</li>
+<li>还支持写http客服端</li>
+<li>代码简单使用起来简单</li>
+<li>采用restful风格API设计方式</li>
+</ul>
+</blockquote>
+<h3 id="博客表有关接口"><a href="#博客表有关接口" class="headerlink" title="博客表有关接口"></a>博客表有关接口</h3><p>1.新增博客</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//请求</span><br><span class="line">POST/blog</span><br><span class="line">&#123;</span><br><span class="line">	title:</span><br><span class="line">	content:</span><br><span class="line">	create_time:</span><br><span class="line">	tag_id:</span><br><span class="line">	author_id:</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//响应</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">&#123;</span><br><span class="line">	OK:true</span><br><span class="line">	reason:&quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<p>2.查看所有博客（标题列表）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//请求</span><br><span class="line">GET/blog                        获取所有</span><br><span class="line">GET/blog?tag_id=1				按照标签来筛选</span><br><span class="line">GET/blog?author_id=1			按照作者来筛选</span><br><span class="line"></span><br><span class="line">//响应</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">[</span><br><span class="line">	&#123;</span><br><span class="line">		blog_ig:</span><br><span class="line">		title:</span><br><span class="line">		tag_id:</span><br><span class="line">		author_id:</span><br><span class="line">		create_time:</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		blog_ig:</span><br><span class="line">		title:</span><br><span class="line">		tag_id:</span><br><span class="line">		author_id:</span><br><span class="line">		create_time:</span><br><span class="line">	&#125;,</span><br><span class="line">	.</span><br><span class="line">	.</span><br><span class="line">	.</span><br><span class="line">	.</span><br><span class="line">	.</span><br><span class="line">	</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>查看某个博客：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//请求</span><br><span class="line">GET/blog/:blog_id     “:XXX” 代表了一个具体的blog_id,是一个具体的数字 类似于blog/1</span><br><span class="line"></span><br><span class="line">//响应</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">&#123;</span><br><span class="line">		blog_ig:</span><br><span class="line">		title:</span><br><span class="line">		content:c	tag_id:</span><br><span class="line">		author_id:</span><br><span class="line">		create_time:</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>删除博客</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//请求</span></span><br><span class="line">DELETE/blog/:blog_id</span><br><span class="line"></span><br><span class="line"><span class="comment">//响应</span></span><br><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span></span><br><span class="line">&#123;</span><br><span class="line">    ok：<span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.修改博客</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//请求</span></span><br><span class="line">PUT/blog/:blog_id</span><br><span class="line">&#123;</span><br><span class="line">	titlle:<span class="string">"new title"</span>,</span><br><span class="line">	content:<span class="string">"new content"</span>,</span><br><span class="line">	tag_id:<span class="string">"new tag_id"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//响应</span></span><br><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line">&#123;</span><br><span class="line">	ok:<span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="标签表接口设计"><a href="#标签表接口设计" class="headerlink" title="标签表接口设计"></a>标签表接口设计</h3><p>1.新增标签</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//请求</span></span><br><span class="line">POST/tag</span><br><span class="line">&#123;</span><br><span class="line">	tag_id:</span><br><span class="line">	tag_name:</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//响应</span></span><br><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line">&#123;</span><br><span class="line">	ok:<span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.查看标签</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//请求</span></span><br><span class="line">GET/tag</span><br><span class="line"></span><br><span class="line"><span class="comment">//响应</span></span><br><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br></pre></td></tr></table></figure>
+
+<p>3.删除标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//请求</span><br><span class="line">DELETE/tag/：tag_id</span><br><span class="line"></span><br><span class="line">//响应</span><br><span class="line">HTTP/1.1 200 OK</span><br></pre></td></tr></table></figure>
+
+<h3 id="用户表接口实现"><a href="#用户表接口实现" class="headerlink" title="用户表接口实现"></a>用户表接口实现</h3><p>1.新增用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//请求</span><br><span class="line">Post/author</span><br><span class="line">&#123;</span><br><span class="line">	user_name:</span><br><span class="line">	passwords:</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//响应</span><br><span class="line">HTTP/1.1 200 ok</span><br></pre></td></tr></table></figure>
+
+<p>2.查看所有用户列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//请求</span><br><span class="line">Get/author</span><br><span class="line">[</span><br><span class="line">	&#123;</span><br><span class="line">		author_id:</span><br><span class="line">		user_name:</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		author_id:</span><br><span class="line">		user_name:</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		author_id:</span><br><span class="line">		user_name:</span><br><span class="line">	&#125;,</span><br><span class="line">	.</span><br><span class="line">	.</span><br><span class="line">	.</span><br><span class="line">	.</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">//响应</span><br><span class="line">HTTP/1.1 200 ok</span><br></pre></td></tr></table></figure>
+
+<p>查看指定用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//请求</span><br><span class="line">GET/author/:author_id</span><br><span class="line"></span><br><span class="line">//响应</span><br><span class="line">HTTP/1.1 200 ok</span><br><span class="line">&#123;</span><br><span class="line">	author_id:</span><br><span class="line">	user_name:</span><br><span class="line">	passwords:</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="服务器实现："><a href="#服务器实现：" class="headerlink" title="服务器实现："></a>服务器实现：</h2><ol>
+<li><p>和数据库建立连接</p>
+</li>
+<li><p>创建相关数据库对象处理</p>
+<blockquote>
+<ul>
+<li><p>BlogTable</p>
+</li>
+<li><p>TagTable</p>
+</li>
+<li><p>AuthorTable</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>创建服务器，并设置“路由”</p>
+<blockquote>
+<p>HTTP 服务器的路由，和IP协议的路由不一样，此处的路由指的是把方法 和path =》哪个处理函数，关联关系声明清楚，确认一个映射关系</p>
+</blockquote>
+<p>博客表有关的处理函数：</p>
+<blockquote>
+<p>新增博客：Post（“/blog”,Handler）</p>
+<p>查看博客：Get（“/blog”,Handler）</p>
+<p>修改博客：Put（“/blog”,Handler）</p>
+<p>删除博客：Delete（“/blog”,Handler）</p>
+</blockquote>
+<p>标签表有关的处理函数：</p>
+<blockquote>
+<p>新增标签：Post</p>
+<p>查看标签：Get</p>
+<p>删除标签：Delete</p>
+</blockquote>
+<p>作者表有关的处理函数：</p>
+<blockquote>
+<p>新增用户：Post</p>
+<p>查看用户：Get</p>
+<p>修改密码：Put</p>
+</blockquote>
+</li>
+</ol>
+<p>正则表达式：用特殊符号来描述一个字符串应该具有那些特殊特征，</p>
+<p>特征包括不限于：包含那些特殊字符，以什么开头，以什么结尾，特点字符重复出现几次</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/08/02/多用户博客系统Day1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1783,174 +2037,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/07/16/高级IO之多路复用的三种方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhang Hangbo">
-      <meta itemprop="description" content="C/C++，Linux">
-      <meta itemprop="image" content="/HangHangbo/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HangHangbo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/HangHangbo/2019/07/16/高级IO之多路复用的三种方式/" class="post-title-link" itemprop="url">高级IO之多路复用的三种方式</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-16 23:28:17" itemprop="dateCreated datePublished" datetime="2019-07-16T23:28:17+08:00">2019-07-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-18 10:21:53" itemprop="dateModified" datetime="2019-07-18T10:21:53+08:00">2019-07-18</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>  在IO过程中分为两个阶段：</p>
-<ul>
-<li><p>等待</p>
-</li>
-<li><p>拷贝</p>
-<blockquote>
-<p>内核将数据注备好之前，系统一直处于等待状态，等待完毕可以拷贝的时候称为就绪状态。</p>
-</blockquote>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/HangHangbo/2019/07/16/高级IO之多路复用的三种方式/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </li></ul></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1999,7 +2085,7 @@
                 
                   <a href="/HangHangbo/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
