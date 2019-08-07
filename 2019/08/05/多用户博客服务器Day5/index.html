@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="1.C语言传统放入处理错误的方式 传统的错误处理机制：   1. 终止程序，如assert，发生内存错误，除0错误时就会终止程序。 2. 返回错误码，需要程序员自己查找对应的错误 3. C标准库setjmp 和longjmo组合">
+  <meta name="description" content="博客系统设计思路流程：  设计  数据设计 前后端接口设计   编码  封装数据库操作（Model） 封装了服务区API（Ctrl ler 层） 实现客户端代码（实现一组网页）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="异常">
-<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/07/23/异常/index.html">
+<meta property="og:title" content="多用户博客服务器Day5">
+<meta property="og:url" content="https://hanghangbo.github.io/HangHangbo/2019/08/05/多用户博客服务器Day5/index.html">
 <meta property="og:site_name" content="HangHangbo">
-<meta property="og:description" content="1.C语言传统放入处理错误的方式 传统的错误处理机制：   1. 终止程序，如assert，发生内存错误，除0错误时就会终止程序。 2. 返回错误码，需要程序员自己查找对应的错误 3. C标准库setjmp 和longjmo组合">
+<meta property="og:description" content="博客系统设计思路流程：  设计  数据设计 前后端接口设计   编码  封装数据库操作（Model） 封装了服务区API（Ctrl ler 层） 实现客户端代码（实现一组网页）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-23T15:43:49.749Z">
+<meta property="og:updated_time" content="2019-08-07T15:42:03.520Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="异常">
-<meta name="twitter:description" content="1.C语言传统放入处理错误的方式 传统的错误处理机制：   1. 终止程序，如assert，发生内存错误，除0错误时就会终止程序。 2. 返回错误码，需要程序员自己查找对应的错误 3. C标准库setjmp 和longjmo组合">
+<meta name="twitter:title" content="多用户博客服务器Day5">
+<meta name="twitter:description" content="博客系统设计思路流程：  设计  数据设计 前后端接口设计   编码  封装数据库操作（Model） 封装了服务区API（Ctrl ler 层） 实现客户端代码（实现一组网页）">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/07/23/异常/">
+  <link rel="canonical" href="https://hanghangbo.github.io/HangHangbo/2019/08/05/多用户博客服务器Day5/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>异常 | HangHangbo</title>
+  <title>多用户博客服务器Day5 | HangHangbo</title>
   
 
 
@@ -344,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/07/23/异常/">
+    <link itemprop="mainEntityOfPage" href="https://hanghangbo.github.io/HangHangbo/HangHangbo/2019/08/05/多用户博客服务器Day5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang Hangbo">
@@ -361,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">异常
+          <h1 class="post-title" itemprop="name headline">多用户博客服务器Day5
 
               
             
@@ -387,12 +387,24 @@
                 
               
 
-              <time title="创建时间：2019-07-23 23:42:50 / 修改时间：23:43:49" itemprop="dateCreated datePublished" datetime="2019-07-23T23:42:50+08:00">2019-07-23</time>
+              <time title="创建时间：2019-08-05 21:58:24" itemprop="dateCreated datePublished" datetime="2019-08-05T21:58:24+08:00">2019-08-05</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-07 23:42:03" itemprop="dateModified" datetime="2019-08-07T23:42:03+08:00">2019-08-07</time>
               
             
           </span>
@@ -426,52 +438,67 @@
       
 
       
-        <h2 id="1-C语言传统放入处理错误的方式"><a href="#1-C语言传统放入处理错误的方式" class="headerlink" title="1.C语言传统放入处理错误的方式"></a>1.C语言传统放入处理错误的方式</h2><p> <strong>传统的错误处理机制：</strong>  </p>
-<pre><code>1. 终止程序，如assert，发生内存错误，除0错误时就会终止程序。
-2. 返回错误码，需要程序员自己查找对应的错误
-3. C标准库setjmp 和longjmo组合  </code></pre> <a id="more"></a>
-<h2 id="2-C-异常概念"><a href="#2-C-异常概念" class="headerlink" title="2.C++异常概念"></a>2.C++异常概念</h2><p>异常是一种处理错误的方式，当一个函数发现自己无法处理错误时可以抛出异常，让函数的直接或者间接的调用者处理这个错误。  </p>
-<pre><code>- throw:当问题出现，程序会抛出一个异常，这个异常通过throw关键字来完成的。
-- try：try块中的代码标识将就被激活的特定一巡航，它后面会跟很多catch块，
-- catch：在你向要处理问题时四方，通过异常处理程序捕获异常，catch 关键字用于捕获异常，可以有很多catch进行捕获。  </code></pre><h2 id="3-异常的使用"><a href="#3-异常的使用" class="headerlink" title="3.异常的使用"></a>3.异常的使用</h2><pre><code>常的抛出和匹配原则</code></pre><ol>
-<li>异常是通过抛出对象而引发的，该对象的类型决定了应该激活哪个catch的处理代码。</li>
-<li>被选中的处理代码是调用链中与该对象类型匹配且离抛出异常位置最近的那一个。</li>
-<li>抛出异常对象后，会生成一个异常对象的拷贝，因为抛出的异常对象可能是一个临时对象，所以会生成<br>一个拷贝对象，这个拷贝的临时对象会在被catch以后销毁。（这里的处理类似于函数的传值返回）</li>
-<li>catch(…)可以捕获任意类型的异常，问题是不知道异常错误是什么。</li>
-<li>实际中抛出和捕获的匹配原则有个例外，并不都是类型完全匹配，可以抛出的派生类对象，使用基类捕<br>获，这个在实际中非常实用，我们后面会详细讲解这个。  </li>
-</ol>
-<p>在函数调用链中异常栈展开匹配原则</p>
+        <p>博客系统设计思路流程：</p>
 <ol>
-<li>首先检查throw本身是否在try块内部，如果是再查找匹配的catch语句。如果有匹配的，则调到catch<br>的地方进行处理。</li>
-<li>没有匹配的catch则退出当前函数栈，继续在调用函数的栈中进行查找匹配的catch。</li>
-<li>如果到达main函数的栈，依旧没有匹配的，则终止程序。上述这个沿着调用链查找匹配的catch子句的<br>过程称为栈展开。所以实际中我们最后都要加一个catch(…)捕获任意类型的异常，否则当有异常没捕<br>获，程序就会直接终止。</li>
-<li>找到匹配的catch子句并处理以后，会继续沿着catch子句后面继续执行。</li>
-</ol>
-<h2 id="4-异常的优缺点"><a href="#4-异常的优缺点" class="headerlink" title="4.异常的优缺点"></a>4.异常的优缺点</h2><p><strong>C++异常的优点：</strong></p>
-<ol>
-<li><p>异常对象定义好了，相比错误码的方式可以清晰准确的展示出错误的各种信息，甚至可以包含堆栈调用<br>的信息，这样可以帮助更好的定位程序的bug。</p>
+<li><p>设计</p>
+<ul>
+<li>数据设计</li>
+<li>前后端接口设计</li>
+</ul>
 </li>
-<li><p>返回错误码的传统方式有个很大的问题就是，在函数调用链中，深层的函数返回了错误，那么我们得层<br>层返回错误，最外层才能拿到错误.  </p>
-</li>
-<li><p>很多的第三方库都包含异常，比如boost、gtest、gmock等等常用的库，那么我们使用它们也需要使用<br>异常。</p>
-</li>
-<li><p>很多测试框架都使用异常，这样能更好的使用单元测试等进行白盒的测试。</p>
-</li>
-<li><p>部分函数使用异常更好处理，比如构造函数没有返回值，不方便使用错误码方式处理。比如T&amp;<br>operator这样的函数，如果pos越界了只能使用异常或者终止程序处理，没办法通过返回值表示错误。         </p>
-<p> <strong>C++异常的缺点：</strong></p>
-<ol>
-<li>异常会导致程序的执行流乱跳，并且非常的混乱，并且是运行时出错抛异常就会乱跳。这会导致我们跟<br>踪调试时以及分析程序时，比较困难。</li>
-</ol>
-</li>
-<li><p>异常会有一些性能的开销。当然在现代硬件速度很快的情况下，这个影响基本忽略不计。</p>
-</li>
-<li><p>C++没有垃圾回收机制，资源需要自己管理。有了异常非常容易导致内存泄漏、死锁等异常安全问题。<br>这个需要使用RAII来处理资源的管理问题。学习成本较高。</p>
-</li>
-<li><p>C++标准库的异常体系定义得不好，导致大家各自定义各自的异常体系，非常的混乱。</p>
-</li>
-<li><p>异常尽量规范使用，否则后果不堪设想，随意抛异常，外层捕获的用户苦不堪言。所以异常规范有两<br>点：一、抛出异常类型都继承自一个基类。二、函数是否抛异常、抛什么异常，都使用 func（）<br>throw();的方式规范化。</p>
+<li><p>编码</p>
+<ul>
+<li>封装数据库操作（Model）</li>
+<li>封装了服务区API（Ctrl ler 层）</li>
+<li>实现客户端代码（实现一组网页）</li>
+</ul>
 </li>
 </ol>
+<a id="more"></a>
+
+<p>距离大功告成也就只剩下前端部分的设计，因为第一次接触前端开发。所以前端开发，只能对网上的模板进行修改，边查文档边修改。</p>
+<p>网页开发三剑客：</p>
+<ul>
+<li>HTML：表述网页的基本结构</li>
+<li>CSS：表述网页中每一部分是什么样式</li>
+<li>JavaScript：表述网页和用户之间的交互动作</li>
+</ul>
+<p>前端框架采用Vue.js</p>
+<blockquote>
+<p>中文文档</p>
+<p>上手简单</p>
+</blockquote>
+<p>下载好模板，对模板做一下“减法操作”，将网页代码先打包，然后上传到服务器，解压缩包，将网页代码放到服务器目录下。</p>
+<p>让服务器访问到客户端页面操作：</p>
+<blockquote>
+<p>上传到client_code目录下的网页代码都是静态文件，连接到服务器的时候需要让服务器去访问到client_code目录下的静态文件(网页代码)，用户才能在浏览器响应的网页</p>
+<p>在服务器代码中通过set_base_dir(“./path”)设置访问目录，在server_code目录下执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; ln -s ..client_code path</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>符号链接操作，在server_code 目录下创建了一个链接文件path，将path和client_code目录关联在一起，再去访问path就和访问client_code一样了</p>
+</blockquote>
+<p>vue.js</p>
+<blockquote>
+<p>各种前端框架最主要的功能是为了方便才做界面，代码往往涉及两个方面：</p>
+<ul>
+<li>html中需要配套代码</li>
+<li>js中也需要配套代码，js中执行一些操作，就会影响到html中的一些相关内容</li>
+</ul>
+</blockquote>
+<p>点标签，显示所有次标签对应的文章</p>
+<p>markdown</p>
+<p>提交，储存博客的时候，都可以使用markdown的格式来表示，展示的时候，就自动把markdown数据转换成html格式的数据</p>
+<p>Editor.md 第三方的JS的库，完成markdown和html相互之间的转换，以及markdown在先编辑的功能。</p>
+<p>当前使用了一个取巧的办法，来实现列表页和详细页的切换，但是，vue router组件能更好的完成这件事情</p>
+<p>博客列表页，博客详情页</p>
+<p>博客管理页</p>
+<p>删除博客</p>
+<p>编辑博客</p>
+<blockquote>
+<p>点击标题进入编辑页面，编辑页面中应该有一个markdown编辑器，编辑器里面的内容已经是博客当前内容了，编辑完成之后，点击提交按钮，就将数据发送到服务器上</p>
+</blockquote>
+<p>插入博客</p>
 
       
     </div>
@@ -502,8 +529,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/HangHangbo/2019/07/23/多态总结/" rel="next" title="多态总结">
-                <i class="fa fa-chevron-left"></i> 多态总结
+              <a href="/HangHangbo/2019/08/05/多用户博客系统Day4/" rel="next" title="多用户博客系统Day4">
+                <i class="fa fa-chevron-left"></i> 多用户博客系统Day4
               </a>
             
           </div>
@@ -511,10 +538,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/HangHangbo/2019/07/26/排序算法之插入排序/" rel="prev" title="排序算法">
-                排序算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -558,17 +581,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -616,23 +630,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-C语言传统放入处理错误的方式"><span class="nav-number">1.</span> <span class="nav-text">1.C语言传统放入处理错误的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-C-异常概念"><span class="nav-number">2.</span> <span class="nav-text">2.C++异常概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-异常的使用"><span class="nav-number">3.</span> <span class="nav-text">3.异常的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-异常的优缺点"><span class="nav-number">4.</span> <span class="nav-text">4.异常的优缺点</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
